@@ -291,7 +291,7 @@ export default function BarcodeDeliveryScanImportPage() {
                         className="form-control rounded-2"
                         name="file"
                         type="file"
-                        accept=".xlsx,.xls"
+                        accept=".xlsx"
                         onChange={(event) => setImportFile(event.target.files?.[0] || null)}
                         style={{ fontSize: 13, height: 38 }}
                       />

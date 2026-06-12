@@ -486,7 +486,7 @@ export default function KanbanPage(){
                                             className="form-control rounded-2"
                                             name="fileA"
                                             type="file"
-                                            accept=".xlsx,.xls"
+                                            accept=".xlsx"
                                             onChange={(e) =>
                                                 setImportFileA(
                                                     e.target.files?.[0] || null
@@ -520,7 +520,7 @@ export default function KanbanPage(){
                                             className="form-control rounded-2"
                                             name="fileB"
                                             type="file"
-                                            accept=".xlsx,.xls"
+                                            accept=".xlsx"
                                             onChange={(e) =>
                                                 setImportFileB(
                                                     e.target.files?.[0] || null

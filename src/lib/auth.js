@@ -29,7 +29,11 @@ export const getStoredUser = () => {
 export const isAuthenticated = () => Boolean(Cookies.get(JWT_TOKEN_KEY));
 
 export const saveAuthSession = ({ token, user }) => {
-  Cookies.set(JWT_TOKEN_KEY, token, { expires: 1 });
+  Cookies.set(JWT_TOKEN_KEY, token, {
+    expires: 1,
+    sameSite: "strict",
+    secure: globalThis.location?.protocol === "https:",
+  });
   updateStoredUser(user);
 };
 
@@ -41,7 +45,11 @@ export const updateStoredUser = (user) => {
       ...user,
       fullname: user.name || user.fullname,
     }),
-    { expires: 1 }
+    {
+      expires: 1,
+      sameSite: "strict",
+      secure: globalThis.location?.protocol === "https:",
+    }
   );
   notifyAuthStateChanged();
 };
