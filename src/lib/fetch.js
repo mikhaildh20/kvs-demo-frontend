@@ -1,0 +1,132 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+
+const JWT_TOKEN_KEY = "jwtToken";
+const USER_DATA_KEY = "userData";
+const UNAUTHORIZED_PAGE = "/pages/auth/unauthorized";
+const LOGIN_PAGE = "/pages/auth/login";
+const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api").replace(/\/+$/, "");
+
+const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
+});
+
+apiClient.interceptors.request.use(
+  (config) => {
+    const jwtToken = Cookies.get(JWT_TOKEN_KEY);
+    if (jwtToken) {
+      config.headers.Authorization = `Bearer ${jwtToken}`;
+    }
+    if (globalThis.window !== undefined) {
+      config.headers["x-page-path"] = globalThis.location.pathname;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+apiClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response) {
+      const { status } = error.response;
+      const requestUrl = error.config?.url || "";
+      const isLoginRequest = requestUrl.includes("auth/login");
+
+      if (status === 401) {
+        Cookies.remove(JWT_TOKEN_KEY);
+        Cookies.remove(USER_DATA_KEY);
+        
+        if (globalThis.window !== undefined && !isLoginRequest) {
+          globalThis.location.href = LOGIN_PAGE;
+        }
+      } else if (status === 403) {
+        if (globalThis.window !== undefined) {
+          const message = String(error.response.data?.message || "");
+          const isLocked = message.toLowerCase().includes("locked");
+
+          if (isLocked) {
+            Cookies.remove(JWT_TOKEN_KEY);
+            Cookies.remove(USER_DATA_KEY);
+            globalThis.location.href = `${UNAUTHORIZED_PAGE}?reason=locked`;
+          } else {
+            globalThis.location.href = UNAUTHORIZED_PAGE;
+          }
+        }
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+const fetchData = async (url, param = {}, method = "POST", isFormData = false) => {
+  const normalizedMethod = method.toUpperCase();
+  const normalizedUrl = url.startsWith("http")
+    ? url
+    : url.replace(/^\/+/, "");
+
+  try {
+    let config = {};
+
+    if (isFormData) {
+      config.headers = {
+        "Content-Type": "multipart/form-data",
+      };
+    }
+
+    let response;
+    switch (normalizedMethod) {
+      case "GET":
+        response = await apiClient.get(normalizedUrl, { params: param });
+        break;
+      case "POST":
+        response = await apiClient.post(normalizedUrl, param, config);
+        break;
+      case "PUT":
+        response = await apiClient.put(normalizedUrl, param, config);
+        break;
+      case "DELETE":
+        response = await apiClient.delete(normalizedUrl, { data: param });
+        break;
+      default:
+        throw new Error(`Metode not supported: ${method}`);
+    }
+
+    return response.data;
+  } catch (err) {
+    if (err.response) {
+      if (err.response.data) {
+        return {
+          error: true,
+          status: err.response.status,
+          ...err.response.data,
+        };
+      }
+      return {
+        error: true,
+        status: err.response.status,
+        message: err.response.statusText || "Server error",
+      };
+    } else if (err.request) {
+      return {
+        error: true,
+        message: "No response from server. Check your network.",
+      };
+    } else {
+      return { error: true, message: err.message };
+    }
+  }
+};
+
+
+export default fetchData;
+export { API_BASE_URL, JWT_TOKEN_KEY, USER_DATA_KEY };
