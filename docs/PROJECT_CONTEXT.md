@@ -1,17 +1,14 @@
-# Project Context — KVS / Kanban Verification System
+# Project Context — KVS Frontend
 
-This frontend belongs to the same KVS project context as the backend.
+This frontend belongs to the KVS / Kanban Verification System project. The canonical full KVS context is in:
 
-Canonical context file:
+```txt
+/opt/projects/kvs-demo-backend/docs/PROJECT_CONTEXT.md
+```
 
-- Backend repo copy: `/opt/projects/kvs-demo-backend/docs/PROJECT_CONTEXT.md`
-- Frontend repo copy: `/opt/projects/kvs-demo-frontend/docs/PROJECT_CONTEXT.md`
+Keep this context separate from Karsa Home, Portfolio, and Hermes Dashboard.
 
-## Scope
-
-KVS stands for Kanban Verification System. Keep this context separate from Karsa Home, Portfolio, and Hermes Dashboard.
-
-## Repositories and Paths
+## Repo / Path
 
 - Frontend repo: `mikhaildh20/kvs-demo-frontend`
 - Backend repo: `mikhaildh20/kvs-demo-backend`
@@ -21,8 +18,8 @@ KVS stands for Kanban Verification System. Keep this context separate from Karsa
 ## Runtime
 
 - Frontend service: `kvs-demo-frontend.service`
-- Backend service: `kvs-demo-backend.service`
 - Frontend internal port: `3001`
+- Backend service: `kvs-demo-backend.service`
 - Backend internal port: `5000`
 - Runtime user: `kvsdemo`
 - Reverse proxy: Nginx
@@ -36,26 +33,28 @@ KVS stands for Kanban Verification System. Keep this context separate from Karsa
 
 - Real frontend env: `/opt/projects/kvs-demo-frontend/.env.local`
 - Real backend env: `/opt/projects/kvs-demo-backend/.env`
+- `.env.example` only contains safe placeholders.
 - Never commit/display real env values.
-- `.env.example` must use safe placeholders.
 
 ## Frontend Notes
 
 - Next.js app.
+- API target must stay on KVS API domain.
 - Auth cookie uses `sameSite: strict` and `secure` on HTTPS.
 - Excel upload input accepts `.xlsx` only.
-- Lint currently may have non-blocking warnings around `<img>`, ARIA combobox, and hook dependency.
+- Lint may have non-blocking warnings around `<img>`, ARIA combobox, and hook dependency.
 
-## Verification
+## Verification Checklist
 
 Before reporting frontend work as done:
 
-1. `npm run lint`
-2. `npm run build`
-3. `systemctl is-active kvs-demo-frontend.service`
-4. `curl https://kvs-demo.karsa-dev.my.id/pages/auth/login` returns HTTP 200
-5. Confirm API still works through `https://kvs-demo-api.karsa-dev.my.id`
+1. `npm run lint`.
+2. `npm run build`.
+3. `systemctl is-active kvs-demo-frontend.service`.
+4. Frontend login page returns HTTP 200.
+5. API still works through `https://kvs-demo-api.karsa-dev.my.id`.
+6. No real `.env.local` or secrets are staged/committed/printed.
 
 ## Boundary
 
-If the user asks for Karsa Home changes, switch context to `/opt/projects/karsa-home` and do not modify KVS unless linking to it.
+If the user asks for Karsa Home changes, switch to `/opt/projects/karsa-home` and only modify Karsa Home/card data.
