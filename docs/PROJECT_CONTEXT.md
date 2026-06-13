@@ -23,6 +23,7 @@ Keep this context separate from Karsa Home, Portfolio, and Hermes Dashboard.
 - Backend internal port: `5000`
 - Runtime user: `kvsdemo`
 - Reverse proxy: Nginx
+- systemd runs `ExecStartPre=/usr/bin/npm run build` before `next start` so the service recovers if `.next` is missing after reboot/deploy.
 
 ## URLs
 
