@@ -33,7 +33,7 @@ export default function Home() {
         <div className="d-flex justify-content-between align-items-start gap-3 flex-wrap">
           <div>
             <Image
-              src="/images/logoKoito.png"
+              src="/images/logoNLA.png"
               alt="Kanban Verification System"
               width={118}
               height={38}

@@ -57,7 +57,7 @@ function ChangePasswordForm() {
     <main className="min-vh-100 d-flex align-items-center justify-content-center px-3" style={{ background: "#f6f8fb" }}>
       <section className="bg-white border rounded-3 shadow-sm w-100" style={{ maxWidth: 460, padding: 28 }}>
         <div className="mb-4">
-          <img src="/images/logoKoito.png" alt="Koito" style={{ width: 132, height: 42, objectFit: "contain", objectPosition: "left center", marginBottom: 18 }} />
+          <img src="/images/logoNLA.png" alt="NLA" style={{ width: 132, height: 42, objectFit: "contain", objectPosition: "left center", marginBottom: 18 }} />
           <p className="text-uppercase text-secondary fw-semibold mb-2" style={{ fontSize: 11 }}>Kanban Verification System</p>
           <h1 className="h3 fw-semibold mb-2">Change Password</h1>
           <p className="text-secondary mb-0" style={{ fontSize: 14 }}>

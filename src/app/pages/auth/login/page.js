@@ -79,8 +79,8 @@ export default function LoginPage() {
       >
         <div className="mb-4">
           <img
-            src="/images/logoKoito.png"
-            alt="Koito"
+            src="/images/logoNLA.png"
+            alt="NLA"
             style={{
               width: 132,
               height: 42,

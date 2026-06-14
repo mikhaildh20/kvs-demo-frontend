@@ -18,4 +18,5 @@ Rules:
 - Use `.env.example` for safe placeholders only.
 - Keep auth cookie hardening unless there is a verified reason to change it.
 - Keep Excel upload `.xlsx` only unless backend parser/security is updated first.
+- Use `/images/logoNLA.png` as the KVS frontend logo asset; do not reintroduce `/images/logoKoito.png` unless explicitly requested.
 - Verify with `npm run lint`, `npm run build`, service status, and login page HTTP 200 before reporting success.

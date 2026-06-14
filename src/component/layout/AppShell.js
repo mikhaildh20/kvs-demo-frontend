@@ -32,7 +32,7 @@ export default function AppShell({ children, session }) {
 
             <div className="content-brand d-flex align-items-center ms-auto">
               <img
-                src="/images/logoKoito.png"
+                src="/images/logoNLA.png"
                 alt="Kanban Verification System"
                 className="content-brand-logo"
                 style={{

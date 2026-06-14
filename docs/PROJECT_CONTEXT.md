@@ -41,6 +41,7 @@ Keep this context separate from Karsa Home, Portfolio, and Hermes Dashboard.
 
 - Next.js app.
 - API target must stay on KVS API domain.
+- Brand/logo asset uses `/images/logoNLA.png`; do not switch back to `/images/logoKoito.png` unless explicitly requested.
 - Auth cookie uses `sameSite: strict` and `secure` on HTTPS.
 - Excel upload input accepts `.xlsx` only.
 - Lint may have non-blocking warnings around `<img>`, ARIA combobox, and hook dependency.

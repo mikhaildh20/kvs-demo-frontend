@@ -140,7 +140,7 @@ export default function Sidebar({
             onClick={() => handleNavigate("/")}
             title="Kanban Verification System"
           >
-            <img src="/images/logoKoito.png" alt="Kanban Verification System" />
+            <img src="/images/logoNLA.png" alt="Kanban Verification System" />
           </button>
 
           <div className="wms-sidebar-title">
