@@ -35,7 +35,7 @@ export default function IconPickerFa({ value = "", onChange = () => {} }) {
           onClick={() => setOpen((prev) => !prev)}
         >
           {SelectedIcon ? <SelectedIcon size={14} /> : <span className="text-secondary">-</span>}
-          <span>{selectedName || "Pilih icon"}</span>
+          <span>{selectedName || "Select icon"}</span>
         </button>
 
         <button
@@ -52,7 +52,7 @@ export default function IconPickerFa({ value = "", onChange = () => {} }) {
         <div className="border rounded-3 p-2 mt-2" style={{ background: "#fff", maxHeight: 320, overflow: "auto" }}>
           <input
             className="form-control form-control-sm"
-            placeholder="Cari icon... contoh: FaUser"
+            placeholder="Search icon... example: FaUser"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             style={{ fontSize: 12 }}

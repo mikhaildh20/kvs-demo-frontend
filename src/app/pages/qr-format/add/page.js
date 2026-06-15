@@ -101,7 +101,7 @@ export default function AddQrFormatPage() {
                   rows={3}
                   value={form.pattern}
                   onChange={(e) => setForm({ ...form, pattern: e.target.value })}
-                  placeholder="Contoh: {SUPPLIER:7}-{PART_NUMBER:LOWER:NODASH}-{QTY:3}-{SEQ}"
+                  placeholder="Example: {SUPPLIER:7}-{PART_NUMBER:LOWER:NODASH}-{QTY:3}-{SEQ}"
                   required
                   style={{ fontSize: 13 }}
                 />
@@ -109,7 +109,7 @@ export default function AddQrFormatPage() {
             </div>
 
             <div className="mt-3 border rounded-3 p-3" style={{ background: "#f8fafc" }}>
-              <h6 className="mb-2" style={{ fontSize: 14 }}>Panduan Placeholder</h6>
+              <h6 className="mb-2" style={{ fontSize: 14 }}>Placeholder Guide</h6>
               <ul className="mb-2" style={{ fontSize: 12 }}>
                 {QR_PLACEHOLDER_GUIDE.map((text) => <li key={text}>{text}</li>)}
               </ul>

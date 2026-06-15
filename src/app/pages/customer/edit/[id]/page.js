@@ -114,7 +114,7 @@ export default function EditCustomerPage() {
                 name: originalCustomer?.Name || "",
             };
 
-            // 🔹 Ambil perubahan
+            // Capture changed fields
             const changes = getChangedFields(normalizedOriginal, payload);
 
             // 🔹 Convert ke string (biar sesuai struktur lama)

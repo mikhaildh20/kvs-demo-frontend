@@ -1,41 +1,41 @@
-const BULAN_INDONESIA = [
-  "Januari",
-  "Februari",
-  "Maret",
+const MONTHS = [
+  "January",
+  "February",
+  "March",
   "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
+  "May",
+  "June",
+  "July",
+  "August",
   "September",
-  "Oktober",
+  "October",
   "November",
-  "Desember",
+  "December",
 ];
 
-const BULAN_INDONESIA_SHORT = [
+const MONTHS_SHORT = [
   "Jan",
   "Feb",
   "Mar",
   "Apr",
-  "Mei",
+  "May",
   "Jun",
   "Jul",
-  "Agt",
+  "Aug",
   "Sep",
-  "Okt",
+  "Oct",
   "Nov",
-  "Des",
+  "Dec",
 ];
 
-const HARI_INDONESIA = [
-  "Minggu",
-  "Senin",
-  "Selasa",
-  "Rabu",
-  "Kamis",
-  "Jumat",
-  "Sabtu",
+const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ];
 
 const parseValidDate = (dateString) => {
@@ -54,52 +54,40 @@ const parseValidDate = (dateString) => {
   }
 };
 
-/**
- * Format: 23 Nov 2025
- */
 export const formatDate = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
 
   const day = date.getDate();
-  const month = BULAN_INDONESIA_SHORT[date.getMonth()];
+  const month = MONTHS_SHORT[date.getMonth()];
   const year = date.getFullYear();
 
   return `${day} ${month} ${year}`;
 };
 
-/**
- * Format: 23 November 2025
- */
 export const formatDateLong = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
 
   const day = date.getDate();
-  const month = BULAN_INDONESIA[date.getMonth()];
+  const month = MONTHS[date.getMonth()];
   const year = date.getFullYear();
 
   return `${day} ${month} ${year}`;
 };
 
-/**
- * Format: Senin, 23 Nov 2025
- */
 export const formatDateWithDay = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
 
-  const dayName = HARI_INDONESIA[date.getDay()];
+  const dayName = DAYS[date.getDay()];
   const day = date.getDate();
-  const month = BULAN_INDONESIA_SHORT[date.getMonth()];
+  const month = MONTHS_SHORT[date.getMonth()];
   const year = date.getFullYear();
 
   return `${dayName}, ${day} ${month} ${year}`;
 };
 
-/**
- * Format: 23/11/2025
- */
 export const formatDateSlash = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
@@ -111,9 +99,6 @@ export const formatDateSlash = (dateString) => {
   return `${day}/${month}/${year}`;
 };
 
-/**
- * Format: 23-11-2025
- */
 export const formatDateDash = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
@@ -125,15 +110,12 @@ export const formatDateDash = (dateString) => {
   return `${day}-${month}-${year}`;
 };
 
-/**
- * Format: 23 Nov 2025, 14:30
- */
 export const formatDateTime = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
 
   const day = date.getDate();
-  const month = BULAN_INDONESIA_SHORT[date.getMonth()];
+  const month = MONTHS_SHORT[date.getMonth()];
   const year = date.getFullYear();
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
@@ -141,9 +123,6 @@ export const formatDateTime = (dateString) => {
   return `${day} ${month} ${year}, ${hours}:${minutes}`;
 };
 
-/**
- * Format: 14:30:45
- */
 export const formatTime = (dateString, withSeconds = false) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
@@ -159,9 +138,6 @@ export const formatTime = (dateString, withSeconds = false) => {
   return `${hours}:${minutes}`;
 };
 
-/**
- * Format: "2 jam yang lalu", "3 hari yang lalu"
- */
 export const formatRelativeTime = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "-";
@@ -175,17 +151,14 @@ export const formatRelativeTime = (dateString) => {
   const diffMonth = Math.floor(diffDay / 30.44);
   const diffYear = Math.floor(diffDay / 365.25);
 
-  if (diffSec < 60) return "Baru saja";
-  if (diffMin < 60) return `${diffMin} menit yang lalu`;
-  if (diffHour < 24) return `${diffHour} jam yang lalu`;
-  if (diffDay < 30) return `${diffDay} hari yang lalu`;
-  if (diffMonth < 12) return `${diffMonth} bulan yang lalu`;
-  return `${diffYear} tahun yang lalu`;
+  if (diffSec < 60) return "Just now";
+  if (diffMin < 60) return `${diffMin} minute${diffMin === 1 ? "" : "s"} ago`;
+  if (diffHour < 24) return `${diffHour} hour${diffHour === 1 ? "" : "s"} ago`;
+  if (diffDay < 30) return `${diffDay} day${diffDay === 1 ? "" : "s"} ago`;
+  if (diffMonth < 12) return `${diffMonth} month${diffMonth === 1 ? "" : "s"} ago`;
+  return `${diffYear} year${diffYear === 1 ? "" : "s"} ago`;
 };
 
-/**
- * Format: YYYY-MM-DD
- */
 export const formatDateForInput = (dateString) => {
   const date = parseValidDate(dateString);
   if (!date) return "";
@@ -197,9 +170,6 @@ export const formatDateForInput = (dateString) => {
   return `${year}-${month}-${day}`;
 };
 
-/**
- * Cek apakah tanggal valid
- */
 export const isValidDate = (dateString) => {
   return parseValidDate(dateString) !== null;
 };

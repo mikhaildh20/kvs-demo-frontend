@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 export default function Calendar({
   type = "single",
-  label = "Pilih Tanggal",
+  label = "Select Date",
   value,
   onChange,
   required = false,

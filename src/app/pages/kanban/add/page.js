@@ -63,12 +63,12 @@ export default function AddKanbanPage() {
             const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
 
             if (selectedFile.size > maxSize) {
-                Toast.error("Gagal karena ukuran file maksimal 2MB");
+                Toast.error("Failed because the maximum file size is 2MB");
                 return;
             }
 
             if(!allowedTypes.includes(selectedFile.type)) {
-                Toast.error("Gagal karena format file harus PDF, JPEG, atau PNG");
+                Toast.error("Failed because the file format must be PDF, JPEG, or PNG");
                 return;
             }
         }
@@ -93,7 +93,7 @@ export default function AddKanbanPage() {
 
                 setColors(toOptions(colorResponse.data?.data || [], (item) => item.Name || "-"));
             } catch (error) {
-                Toast.error(getKanbanErrorMessage(error, "Gagal memuat pilihan form"));
+                Toast.error(getKanbanErrorMessage(error, "Failed to load form options"));
             } finally {
                 if (isActive) setLoading(false);
             }
@@ -121,7 +121,7 @@ export default function AddKanbanPage() {
 
             if(uploadInstructionResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(uploadInstructionResult, "Gagal karena Instruction Work tidak bisa diupload"));
+                Toast.error(getKanbanErrorMessage(uploadInstructionResult, "Failed because the Instruction Work file could not be uploaded"));
                 return;
             }
 
@@ -131,7 +131,7 @@ export default function AddKanbanPage() {
 
             if(uploadSequenceCheckResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(uploadSequenceCheckResult, "Gagal karena Sequence Check tidak bisa diupload"));
+                Toast.error(getKanbanErrorMessage(uploadSequenceCheckResult, "Failed because the Sequence Check file could not be uploaded"));
                 return;
             }
 
@@ -141,7 +141,7 @@ export default function AddKanbanPage() {
 
             if(uploadLogisticResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(uploadLogisticResult, "Gagal karena Logistic Guide tidak bisa diupload"));
+                Toast.error(getKanbanErrorMessage(uploadLogisticResult, "Failed because the Logistic Guide file could not be uploaded"));
                 return;
             }
 
@@ -151,7 +151,7 @@ export default function AddKanbanPage() {
 
             if(generateSequenceVoiceResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(generateSequenceVoiceResult, "Gagal karena voice Sequence Check tidak bisa dibuat"));
+                Toast.error(getKanbanErrorMessage(generateSequenceVoiceResult, "Failed because the Sequence Check voice could not be generated"));
                 return;
             }
 
@@ -161,7 +161,7 @@ export default function AddKanbanPage() {
 
             if(generateLogisticVoiceResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(generateLogisticVoiceResult, "Gagal karena voice Logistic Guide tidak bisa dibuat"));
+                Toast.error(getKanbanErrorMessage(generateLogisticVoiceResult, "Failed because the Logistic Guide voice could not be generated"));
                 return;
             }
 
@@ -197,7 +197,7 @@ export default function AddKanbanPage() {
             Toast.success(response.message || "Kanban saved successfully");
             router.push("/pages/kanban");
         } catch (error) {
-            Toast.error(getKanbanErrorMessage(error, "Gagal menyimpan kanban"));
+            Toast.error(getKanbanErrorMessage(error, "Failed to save kanban"));
             console.error(error)
         } finally {
             setSaving(false);

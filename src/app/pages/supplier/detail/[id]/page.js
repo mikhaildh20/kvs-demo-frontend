@@ -165,10 +165,10 @@ export default function DetailSupplierPage() {
                 Customer Assignment
               </h6>
               <p className="text-secondary mb-0" style={{ fontSize: 13 }}>
-                Pilih customer untuk supplier ini.
+                Select customers for this supplier.
               </p>
             </div>
-            <Button classType="primary" iconName="save" label={saving ? "Menyimpan..." : "Simpan"} isDisabled={saving} onClick={handleSave} />
+            <Button classType="primary" iconName="save" label={saving ? "Saving..." : "Save"} isDisabled={saving} onClick={handleSave} />
           </div>
           <div className="p-3 border-bottom">
             <div style={{ maxWidth: 360 }}>

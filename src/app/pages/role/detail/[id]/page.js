@@ -206,13 +206,13 @@ export default function DetailRolePage() {
                                 Menu Assignment
                             </h6>
                             <p className="text-secondary mb-0" style={{ fontSize: 13 }}>
-                                Pilih menu yang bisa diakses role ini.
+                                Select menus accessible by this role.
                             </p>
                         </div>
                         <Button
                             classType="primary"
                             iconName="save"
-                            label={saving ? "Menyimpan..." : "Simpan"}
+                            label={saving ? "Saving..." : "Save"}
                             isDisabled={saving}
                             onClick={handleSave}
                         />

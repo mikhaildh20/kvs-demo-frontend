@@ -36,7 +36,7 @@ export default function OqcPrintPage() {
         if (!isActive) return;
 
         if (response.error) {
-          Toast.error(response.message || "Preview data tidak ditemukan");
+          Toast.error(response.message || "Preview data was not found");
           router.replace("/pages/oqc");
           return;
         }
@@ -44,7 +44,7 @@ export default function OqcPrintPage() {
         setPreviewData(response.data);
       } catch {
         if (!isActive) return;
-        Toast.error("Gagal memuat data print");
+        Toast.error("Failed to load print data");
         router.replace("/pages/oqc");
       } finally {
         if (isActive) setLoading(false);

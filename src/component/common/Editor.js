@@ -51,7 +51,7 @@ const Editor = ({ label, name, value, onChange, error }) => {
         const data = editor.getData();
         onChange({ target: { name, value: data } });
       } catch {
-        Toast.error("Terjadi kesalahan saat menyimpan data editor.");
+        Toast.error("An error occurred while saving editor data.");
       }
     },
     [name, onChange]

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Filter from "./Filter";
 import PropTypes from "prop-types";
+import { buildActionPath, useCanAccessPage } from "@/lib/sessionContext";
 
 export default function Formsearch({
   onAdd,
@@ -16,11 +18,14 @@ export default function Formsearch({
   showFilterButton = true,
   showExportButton = true,
   showImportButton = false,
-  addButtonText = "Tambah",
+  addButtonText = "Add",
   importButtonText = "Import",
   filterContent = null,
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const pathname = usePathname();
+  const canAccessPage = useCanAccessPage();
+  const canAdd = !showAddButton || canAccessPage(buildActionPath(pathname, "add"));
 
   const handleSearch = useCallback(() => {
     if (onSearch) onSearch(searchQuery);
@@ -54,7 +59,7 @@ export default function Formsearch({
       <div className="row g-2 align-items-center">
 
         {/* Add button */}
-        {showAddButton && (
+        {showAddButton && canAdd && (
           <div className="col-12 col-md-auto">
             <button
               className="btn d-flex align-items-center justify-content-center gap-2 w-100 w-md-auto"

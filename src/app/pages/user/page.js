@@ -33,7 +33,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const showGeneratedPasswordAlert = async (password) => {
   swal({
     title: "Generated Password",
-    text: `Password: ${password}\n\nCatat password ini. Tombol OK akan muncul dalam 5 detik...`,
+    text: `Password: ${password}\n\nSave this password. The OK button will appear in 5 seconds...`,
     icon: "warning",
     buttons: false,
     closeOnClickOutside: false,
@@ -183,9 +183,9 @@ export default function UserPage() {
     const row = dataUserRaw.find((item) => item.Id === id);
     const result = await SweetAlert({
       title: "Reset Password",
-      text: `Reset password untuk user ${row?.Username}?`,
+      text: `Reset password for user ${row?.Username}?`,
       icon: "warning",
-      confirmText: "Ya, reset",
+      confirmText: "Yes, reset",
     });
     if (!result) return;
 

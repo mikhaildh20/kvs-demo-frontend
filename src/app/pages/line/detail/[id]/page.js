@@ -150,9 +150,9 @@ export default function DetailLinePage() {
           <div className="d-flex justify-content-between align-items-center p-3 border-bottom gap-2">
             <div>
               <h6 className="mb-1" style={{ fontSize: 14 }}>User Assignment</h6>
-              <p className="text-secondary mb-0" style={{ fontSize: 13 }}>Pilih user yang ditugaskan ke line ini.</p>
+              <p className="text-secondary mb-0" style={{ fontSize: 13 }}>Select users assigned to this line.</p>
             </div>
-            <Button classType="primary" iconName="save" label={saving ? "Menyimpan..." : "Simpan"} isDisabled={saving} onClick={handleSave} />
+            <Button classType="primary" iconName="save" label={saving ? "Saving..." : "Save"} isDisabled={saving} onClick={handleSave} />
           </div>
           <div className="p-3 border-bottom">
             <div style={{ maxWidth: 360 }}>

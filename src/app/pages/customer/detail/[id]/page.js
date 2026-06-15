@@ -125,7 +125,7 @@ export default function DetailCustomerPage() {
 
     const handleSave = async () => {
         if (selectedKanbans.length === 0) {
-            Toast.error("Pilih minimal satu kanban");
+            Toast.error("Select at least one kanban");
             return;
         }
 
@@ -204,13 +204,13 @@ export default function DetailCustomerPage() {
                                 Kanban Assignment
                             </h6>
                             <p className="text-secondary mb-0" style={{ fontSize: 13 }}>
-                                Pilih kanban yang akan diisi customer ini.
+                                Select kanbans assigned to this customer.
                             </p>
                         </div>
                         <Button
                             classType="primary"
                             iconName="save"
-                            label={saving ? "Menyimpan..." : "Simpan"}
+                            label={saving ? "Saving..." : "Save"}
                             isDisabled={saving || selectedKanbans.length === 0}
                             onClick={handleSave}
                         />

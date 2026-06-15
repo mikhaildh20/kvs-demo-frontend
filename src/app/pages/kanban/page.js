@@ -299,7 +299,7 @@ export default function KanbanPage(){
 
     const handleImport = useCallback(async () => {
         if (!importFileA || !importFileB) {
-            Toast.error("Pilih file Excel A dan Excel B terlebih dahulu");
+            Toast.error("Select Excel file A and Excel file B first");
             return;
         }
 
@@ -562,7 +562,7 @@ export default function KanbanPage(){
                                                     className="fw-semibold mb-2"
                                                     style={{ fontSize: 13 }}
                                                 >
-                                                    Panduan File A - Customer Part List
+                                                    File A Guide - Customer Part List
                                                 </div>
 
                                                 <ol
@@ -573,12 +573,12 @@ export default function KanbanPage(){
                                                     }}
                                                 >
                                                     <li>
-                                                        Buka aplikasi PRONES dan
-                                                        login.
+                                                        Open the PRONES application and
+                                                        log in.
                                                     </li>
 
                                                     <li>
-                                                        Masuk ke menu{" "}
+                                                        Go to menu{" "}
                                                         <span className="fw-semibold text-dark">
                                                             KOITO A
                                                         </span>{" "}
@@ -589,36 +589,38 @@ export default function KanbanPage(){
                                                     </li>
 
                                                     <li>
-                                                        Klik tombol{" "}
+                                                        Click the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             Customer Item Master
                                                             List
-                                                        </span>
+                                                        </span>{" "}
+                                                        button.
                                                     </li>
 
                                                     <li>
-                                                        Pada window{" "}
+                                                        In the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             Customer Item Master
                                                             List
-                                                        </span>
-                                                        , klik tombol{" "}
+                                                        </span>{" "}
+                                                        window, click the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             PRINT
-                                                        </span>
+                                                        </span>{" "}
+                                                        button.
                                                     </li>
 
                                                     <li>
-                                                        Setelah window hasil print
-                                                        muncul, klik icon{" "}
+                                                        After the print result window
+                                                        appears, click the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             export to file
                                                         </span>{" "}
-                                                        di samping icon printer.
+                                                        icon next to the printer icon.
                                                     </li>
 
                                                     <li>
-                                                        Simpan file dengan nama{" "}
+                                                        Save the file with the name{" "}
                                                         <span className="fw-semibold text-dark">
                                                             Customer Item
                                                             Master.xlsx
@@ -640,7 +642,7 @@ export default function KanbanPage(){
                                                     className="fw-semibold mb-2"
                                                     style={{ fontSize: 13 }}
                                                 >
-                                                    Panduan File B - Kanban Master
+                                                    File B Guide - Kanban Master
                                                 </div>
 
                                                 <ol
@@ -651,12 +653,12 @@ export default function KanbanPage(){
                                                     }}
                                                 >
                                                     <li>
-                                                        Buka aplikasi PRONES dan
-                                                        login.
+                                                        Open the PRONES application and
+                                                        log in.
                                                     </li>
 
                                                     <li>
-                                                        Masuk ke menu{" "}
+                                                        Go to menu{" "}
                                                         <span className="fw-semibold text-dark">
                                                             KOITO B
                                                         </span>{" "}
@@ -667,38 +669,40 @@ export default function KanbanPage(){
                                                     </li>
 
                                                     <li>
-                                                        Klik tombol{" "}
+                                                        Click the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             Item Master List
-                                                        </span>
+                                                        </span>{" "}
+                                                        button.
                                                     </li>
 
                                                     <li>
-                                                        Pada window{" "}
+                                                        In the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             Item Master List
-                                                        </span>
-                                                        , tekan{" "}
+                                                        </span>{" "}
+                                                        window, press{" "}
                                                         <span className="fw-semibold text-dark">
                                                             [Enter]
                                                         </span>{" "}
-                                                        lalu klik tombol{" "}
+                                                        then click the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             PRINT
-                                                        </span>
+                                                        </span>{" "}
+                                                        button.
                                                     </li>
 
                                                     <li>
-                                                        Setelah window hasil print
-                                                        muncul, klik icon{" "}
+                                                        After the print result window
+                                                        appears, click the{" "}
                                                         <span className="fw-semibold text-dark">
                                                             export to file
                                                         </span>{" "}
-                                                        di samping icon printer.
+                                                        icon next to the printer icon.
                                                     </li>
 
                                                     <li>
-                                                        Simpan file dengan nama{" "}
+                                                        Save the file with the name{" "}
                                                         <span className="fw-semibold text-dark">
                                                             Kanban Item
                                                             Master.xlsx

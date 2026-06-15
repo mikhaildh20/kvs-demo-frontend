@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Icon from "./Icon";
 
 const VARIANTS = {
-  // Primary — biru sidebar (#185fa5)
+  // Primary — sidebar blue (#185fa5)
   primary: {
     background: "#185fa5",
     color: "#fff",
@@ -14,19 +14,19 @@ const VARIANTS = {
     color: "#6b6b6b",
     border: "1px solid #e0e0e0",
   },
-  // Warning/Login — amber style (same as sidebar login btn)
+  // Warning/Login — amber style (same as sidebar login button)
   warning: {
     background: "#faeeda",
     color: "#854f0b",
     border: "1px solid #fac775",
   },
-  // Danger — merah subtle
+  // Danger — subtle red
   danger: {
     background: "#fff5f5",
     color: "#a32d2d",
     border: "0.5px solid #f5c6c6",
   },
-  // Light — abu-abu (same as sidebar toggle/logout btn)
+  // Light — gray (same as sidebar toggle/logout button)
   light: {
     background: "#f5f5f4",
     color: "#1a1a1a",
@@ -53,7 +53,7 @@ export default function Button({
 }) {
   const variant = VARIANTS[classType] ?? VARIANTS.secondary;
 
-  // icon-only: circle button (same as sidebar collapsed footer btn)
+  // icon-only: circle button (same as sidebar collapsed footer button)
   if (iconOnly) {
     return (
       <button

@@ -192,9 +192,9 @@ export default function DetailGroupMenuPage() {
           <div className="d-flex justify-content-between align-items-center p-3 border-bottom gap-2">
             <div>
               <h6 className="mb-1" style={{ fontSize: 14 }}>Menu Assignment</h6>
-              <p className="text-secondary mb-0" style={{ fontSize: 13 }}>Pilih menu yang masuk ke group ini.</p>
+              <p className="text-secondary mb-0" style={{ fontSize: 13 }}>Select menus included in this group.</p>
             </div>
-            <Button classType="primary" iconName="save" label={saving ? "Menyimpan..." : "Simpan"} isDisabled={saving} onClick={handleSave} />
+            <Button classType="primary" iconName="save" label={saving ? "Saving..." : "Save"} isDisabled={saving} onClick={handleSave} />
           </div>
           <div className="p-3 border-bottom">
             <div style={{ maxWidth: 360 }}>

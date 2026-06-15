@@ -113,7 +113,7 @@ export function ImgWithPlaceholder({
             justifyContent: "center",
             borderRadius: className.includes("rounded") ? "0.375rem" : 0,
           }}
-          aria-label="Memuat gambar"
+          aria-label="Loading image"
         >
           <div className="spinner-border text-secondary" aria-hidden="true" />
           <span className="visually-hidden">Loading...</span>

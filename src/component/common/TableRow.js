@@ -5,6 +5,8 @@ import Badge from "./Badge";
 import DOMPurify from "isomorphic-dompurify";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
+import { usePathname } from "next/navigation";
+import { buildActionPath, useCanAccessPage } from "@/lib/sessionContext";
 
 export default function TableRow({
   row,
@@ -29,9 +31,29 @@ export default function TableRow({
   config,
   rowClassName,
 }) {
+  const pathname = usePathname();
+  const canAccessPage = useCanAccessPage();
+  const canUseAction = useCallback(
+    (action) => {
+      const routeAction = {
+        Detail: "detail",
+        Edit: "edit",
+        Print: "print",
+      }[action];
+
+      if (!routeAction) return true;
+      return canAccessPage(buildActionPath(pathname, routeAction));
+    },
+    [canAccessPage, pathname]
+  );
+
   const renderAction = useCallback(
     (actions, id, status) =>
       actions.map((action) => {
+        if (typeof action === "string" && !canUseAction(action)) {
+          return null;
+        }
+
         switch (action) {
           case "Toggle": {
             if (status === "Active") {
@@ -234,8 +256,8 @@ export default function TableRow({
         }
       }),
     [
+      canUseAction,
       row.id,
-      row.Status,
       onApprove,
       onCancel,
       onDelete,

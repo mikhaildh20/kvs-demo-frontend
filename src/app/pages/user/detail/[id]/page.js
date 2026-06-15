@@ -15,7 +15,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const showGeneratedPasswordAlert = async (password) => {
   swal({
     title: "Generated Password",
-    text: `Password: ${password}\n\nCatat password ini. Tombol OK akan muncul dalam 5 detik...`,
+    text: `Password: ${password}\n\nSave this password. The OK button will appear in 5 seconds...`,
     icon: "warning",
     buttons: false,
     closeOnClickOutside: false,
@@ -60,9 +60,9 @@ export default function UserDetailPage() {
   const handleReset = async () => {
     const result = await swal({
       title: "Reset Password",
-      text: `Reset password untuk user ${user?.Username}?`,
+      text: `Reset password for user ${user?.Username}?`,
       icon: "warning",
-      buttons: ["Batal", "Ya, reset"],
+      buttons: ["Cancel", "Yes, reset"],
       dangerMode: true,
     });
     if (!result) return;

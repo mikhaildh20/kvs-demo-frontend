@@ -32,7 +32,7 @@ export default function TableHeader({
                 color: "#b0b0b0",
                 borderBottom: "1px solid #e0e0e0",
               }}
-              title={col === "Check" ? "Pilih Semua" : col}
+              title={col === "Check" ? "Select All" : col}
             >
               {enableCheckbox && col === "Check" ? (
                 <input

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export default function Badge({
-  status = "Aktif",
+  status = "Active",
   size = "sm",
   customMap = {},
   className = "",
