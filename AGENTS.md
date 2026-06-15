@@ -19,4 +19,8 @@ Rules:
 - Keep auth cookie hardening unless there is a verified reason to change it.
 - Keep Excel upload `.xlsx` only unless backend parser/security is updated first.
 - Use `/images/logoNLA.png` as the KVS frontend logo asset; do not reintroduce `/images/logoKoito.png` unless explicitly requested.
+- KVS company/brand text should use `Nusantara Lighting Automotive` or NLA wording.
+- Keep Portfolio company/work-history naming separate from KVS branding.
+- Hide Add/Detail/Edit/Print buttons when the current role lacks the matching page action path.
+- Keep user-facing Toast text English and consistent.
 - Verify with `npm run lint`, `npm run build`, service status, and login page HTTP 200 before reporting success.

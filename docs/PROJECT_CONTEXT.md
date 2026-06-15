@@ -42,6 +42,9 @@ Keep this context separate from Karsa Home, Portfolio, and Hermes Dashboard.
 - Next.js app.
 - API target must stay on KVS API domain.
 - Brand/logo asset uses `/images/logoNLA.png`; do not switch back to `/images/logoKoito.png` unless explicitly requested.
+- Visible KVS company/brand text should use `Nusantara Lighting Automotive` or NLA wording, not portfolio work-history company names.
+- RBAC action buttons must be hidden when the current role lacks the required page path (`/pages/{module}/add`, `/detail`, `/edit`, `/print`).
+- Toast messages should be English, consistent, and frontend-controlled for success messages; avoid relying on backend `response.message` for normal success wording.
 - Auth cookie uses `sameSite: strict` and `secure` on HTTPS.
 - Excel upload input accepts `.xlsx` only.
 - Lint may have non-blocking warnings around `<img>`, ARIA combobox, and hook dependency.
