@@ -54,7 +54,7 @@ export default function OqcLabelCanvas({ label }) {
     ctx.moveTo(222, 138); ctx.lineTo(222, 280);
     ctx.stroke();
 
-    textWithOffset(ctx, "PT INDONESIA KOITO", 0, 2, W, 20, 7, true, -45);
+    textWithOffset(ctx, "NUSANTARA LIGHTING AUTOMOTIVE", 0, 2, W, 20, 6, true, -45);
     text(ctx, "OQC", 0, 24, 68, 26, 10, true);
     text(ctx, "Shift 1", 68, 24, 61, 26, 10, true);
     text(ctx, "Shift 2", 129, 24, 77, 26, 10, true);

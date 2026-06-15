@@ -51,7 +51,7 @@ export default function AppShell({ children, session }) {
 
           <footer className="content-footer d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2">
             <div className="text-muted small">
-              &copy; {new Date().getFullYear()} <strong>PT Indonesia Koito</strong>. All rights reserved.
+              &copy; {new Date().getFullYear()} <strong>Nusantara Lighting Automotive</strong>. All rights reserved.
             </div>
 
             <div className="text-muted small text-md-end">
