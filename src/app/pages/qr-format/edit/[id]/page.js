@@ -58,7 +58,7 @@ export default function EditQrFormatPage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "QR format not found");
+        Toast.error(response.message || "QR format not found.");
         router.replace("/pages/qr-format");
         return;
       }
@@ -96,7 +96,7 @@ export default function EditQrFormatPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to update QR format");
+      Toast.error(response.message || "Failed to update QR format.");
       return;
     }
 
@@ -109,11 +109,11 @@ export default function EditQrFormatPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "QR format updated, but action log failed");
+      Toast.error("QR format updated successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "QR format updated successfully");
+    Toast.success("QR format updated successfully.");
     router.push("/pages/qr-format");
   };
 

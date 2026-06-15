@@ -35,10 +35,10 @@ export default function OQCDetailPage() {
       try {
         setLoading(true);
         const response = await fetchData(`oqcs/${encryptedId}/preview`, {}, "GET");
-        if (response.error) throw new Error(response.message || "Failed to load OQC detail");
+        if (response.error) throw new Error(response.message || "Failed to load OQC detail.");
         setDetail(response.data || null);
       } catch (error) {
-        Toast.error(error.message || "Failed to load OQC detail");
+        Toast.error(error.message || "Failed to load OQC detail.");
         router.replace("/pages/oqc");
       } finally {
         setLoading(false);

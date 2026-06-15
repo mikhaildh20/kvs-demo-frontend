@@ -23,7 +23,7 @@ export default function AddSupplierPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to save supplier");
+      Toast.error(response.message || "Failed to create supplier.");
       return;
     }
 
@@ -36,11 +36,11 @@ export default function AddSupplierPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Supplier saved, but action log failed");
+      Toast.error("Supplier created successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Supplier saved successfully");
+    Toast.success("Supplier created successfully.");
     router.push("/pages/supplier");
   };
 

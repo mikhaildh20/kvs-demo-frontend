@@ -35,7 +35,7 @@ export default function MatrixPage() {
                 }))
             );
         } catch (error) {
-            Toast.error(error.message || "Failed to load matrix data");
+            Toast.error(error.message || "Failed to load matrix data.");
             setDataMatrix([]);
         } finally {
             setLoading(false);

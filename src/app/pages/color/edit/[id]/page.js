@@ -34,7 +34,7 @@ export default function EditColorPage() {
             setLoading(false);
 
             if (response.error) {
-                Toast.error(response.message || "Color not found");
+                Toast.error(response.message || "Color not found.");
                 router.replace("/pages/color");
                 return;
             }
@@ -59,7 +59,7 @@ export default function EditColorPage() {
 
         if (response.error) {
             setSaving(false);
-            Toast.error(response.message || "Failed to update color");
+            Toast.error(response.message || "Failed to update color.");
             return;
         }
 
@@ -72,11 +72,11 @@ export default function EditColorPage() {
         setSaving(false);
 
         if (logResponse.error) {
-            Toast.error(logResponse.message || "Color updated, but action log failed");
+            Toast.error("Color updated successfully. Action log could not be saved.");
             return;
         }
 
-        Toast.success(response.message || "Color updated successfully");
+        Toast.success("Color updated successfully.");
         router.push("/pages/color");
     };
 

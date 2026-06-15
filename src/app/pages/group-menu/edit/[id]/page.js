@@ -34,7 +34,7 @@ export default function EditGroupMenuPage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "Group menu not found");
+        Toast.error(response.message || "Group menu not found.");
         router.replace("/pages/group-menu");
         return;
       }
@@ -56,7 +56,7 @@ export default function EditGroupMenuPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to update group menu");
+      Toast.error(response.message || "Failed to update group menu.");
       return;
     }
 
@@ -69,11 +69,11 @@ export default function EditGroupMenuPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Group menu updated, but action log failed");
+      Toast.error("Group menu updated successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Group menu updated successfully");
+    Toast.success("Group menu updated successfully.");
     router.push("/pages/group-menu");
   };
 

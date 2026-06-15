@@ -34,7 +34,7 @@ export default function EditLinePage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "Line not found");
+        Toast.error(response.message || "Line not found.");
         router.replace("/pages/line");
         return;
       }
@@ -64,7 +64,7 @@ export default function EditLinePage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to update line");
+      Toast.error(response.message || "Failed to update line.");
       return;
     }
 
@@ -77,11 +77,11 @@ export default function EditLinePage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Line updated, but action log failed");
+      Toast.error("Line updated successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Line updated successfully");
+    Toast.success("Line updated successfully.");
     router.push("/pages/line");
   };
 

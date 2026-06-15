@@ -57,11 +57,11 @@ export default function LogDetailPage() {
       if (!id) throw new Error("Action log id is invalid");
 
       const response = await fetchData(`action-logs/${encodeURIComponent(id)}`, {}, "GET");
-      if (response.error) throw new Error(response.message || "Failed to load action log detail");
+      if (response.error) throw new Error(response.message || "Failed to load action log detail.");
 
       setLog(response.data || null);
     } catch (error) {
-      Toast.error(error.message || "Failed to load action log detail");
+      Toast.error(error.message || "Failed to load action log detail.");
       router.replace("/pages/log");
     } finally {
       setLoading(false);

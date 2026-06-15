@@ -23,7 +23,7 @@ export default function AddColorPage() {
 
         if (response.error) {
             setSaving(false);
-            Toast.error(response.message || "Failed to save color");
+            Toast.error(response.message || "Failed to create color.");
             return;
         }
 
@@ -36,11 +36,11 @@ export default function AddColorPage() {
         setSaving(false);
 
         if (logResponse.error) {
-            Toast.error(logResponse.message || "Color saved, but action log failed");
+            Toast.error("Color created successfully. Action log could not be saved.");
             return;
         }
 
-        Toast.success(response.message || "Color saved successfully");
+        Toast.success("Color created successfully.");
         router.push("/pages/color");
     };
 

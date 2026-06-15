@@ -55,7 +55,7 @@ export default function DetailCustomerPage() {
             setLoading(false);
 
             if (response.error) {
-                Toast.error(response.message || "Customer not found");
+                Toast.error(response.message || "Customer not found.");
                 router.replace("/pages/customer");
                 return;
             }
@@ -125,7 +125,7 @@ export default function DetailCustomerPage() {
 
     const handleSave = async () => {
         if (selectedKanbans.length === 0) {
-            Toast.error("Select at least one kanban");
+            Toast.error("Select at least one kanban.");
             return;
         }
 
@@ -149,13 +149,13 @@ export default function DetailCustomerPage() {
             });
 
             if (logResponse.error) {
-                throw new Error(logResponse.message || "Customer kanban saved, but action log failed");
+                throw new Error("Customer kanban mapping was saved successfully. Action log could not be saved.");
             }
 
-            Toast.success(response.message || "Customer kanban data saved successfully");
+            Toast.success("Customer kanban mapping saved successfully.");
             router.push("/pages/customer");
         } catch (error) {
-            Toast.error(error.message || "Failed to save customer kanban data");
+            Toast.error(error.message || "Failed to save customer kanban mapping.");
         } finally {
             setSaving(false);
         }

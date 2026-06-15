@@ -37,7 +37,7 @@ export default function EditCustomerPage() {
             setLoading(false);
 
             if (response.error) {
-                Toast.error(response.message || "Customer not found");
+                Toast.error(response.message || "Customer not found.");
                 router.replace("/pages/customer");
                 return;
             }
@@ -104,7 +104,7 @@ export default function EditCustomerPage() {
             );
 
             if (response.error) {
-                Toast.error(response.message || "Failed to update customer");
+                Toast.error(response.message || "Failed to update customer.");
                 return;
             }
 
@@ -130,7 +130,7 @@ export default function EditCustomerPage() {
                 });
             }
 
-            Toast.success(response.message || "Customer updated successfully");
+            Toast.success("Customer updated successfully.");
             router.push("/pages/customer");
 
         } catch (err) {

@@ -42,7 +42,7 @@ function ChangePasswordForm() {
     setLoading(false);
 
     if (response.error) {
-      setMessage(response.message || "Failed to change password");
+      setMessage(response.message || "Failed to change password.");
       return;
     }
 

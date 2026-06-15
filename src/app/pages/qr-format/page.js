@@ -95,7 +95,7 @@ export default function QrFormatPage() {
       setTotalData(total);
       setCurrentPage(page);
     } catch (err) {
-      Toast.error(err.message || "Failed to load QR format data");
+      Toast.error(err.message || "Failed to load QR format data.");
       setDataRows([]);
       setTotalData(0);
     } finally {
@@ -161,13 +161,13 @@ export default function QrFormatPage() {
       });
 
       if (logResponse.error) {
-        throw new Error(logResponse.message || "QR format status updated, but action log failed");
+        throw new Error("QR format status updated successfully. Action log could not be saved.");
       }
 
-      Toast.success(response.message || "QR format status updated successfully");
+      Toast.success("QR format status updated successfully.");
       await loadData(currentPage, sortBy, search, sortStatus);
     } catch (error) {
-      Toast.error(error.message || "Failed to update QR format status");
+      Toast.error(error.message || "Failed to update QR format status.");
     } finally {
       setLoading(false);
     }

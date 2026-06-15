@@ -94,7 +94,7 @@ export default function RolePage() {
                 setTotalData(total);
                 setCurrentPage(page);
             } catch (error) {
-                Toast.error(error.message || "Failed to load data");
+                Toast.error(error.message || "Failed to load data.");
                 setDataRole([]);
                 setTotalData(0);
             } finally{
@@ -174,13 +174,13 @@ export default function RolePage() {
                 });
 
                 if(logResponse.error){
-                    throw new Error(logResponse.message || "Role status updated, but action log failed");
+                    throw new Error("Role status updated successfully. Action log could not be saved.");
                 }
 
-                Toast.success(response.message || "Role status updated successfully");
+                Toast.success("Role status updated successfully.");
                 await loadData(currentPage, sortBy, search, sortStatus);
             } catch (error) {
-                Toast.error(error.message || "Failed to update role status");
+                Toast.error(error.message || "Failed to update role status.");
             } finally {
                 setLoading(false);
             }

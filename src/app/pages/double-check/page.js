@@ -127,7 +127,7 @@ export default function DoubleCheckPage() {
 
   const loadDailySummary = useCallback(async () => {
     const response = await fetchData("double-check/summary", {}, "GET");
-    if (response.error) throw new Error(response.message || "Failed to load double check summary");
+    if (response.error) throw new Error(response.message || "Failed to load double check summary.");
     setDailySummary(response.data || defaultDailySummary);
   }, []);
 
@@ -138,7 +138,7 @@ export default function DoubleCheckPage() {
       setLoading(true);
       try {
         const response = await fetchData("double-check/access", {}, "GET");
-        if (response.error) throw new Error(response.message || "Failed to check access");
+        if (response.error) throw new Error(response.message || "Failed to check access.");
 
         const isAllowed = Boolean(response.data?.allowed);
         if (!active) return;
@@ -158,7 +158,7 @@ export default function DoubleCheckPage() {
           });
         } else {
           loadDailySummary().catch((summaryError) => {
-            Toast.error(summaryError.message || "Failed to load double check summary");
+            Toast.error(summaryError.message || "Failed to load double check summary.");
           });
           focusScanInput();
         }
@@ -166,7 +166,7 @@ export default function DoubleCheckPage() {
         if (!active) return;
         setAllowed(false);
         setAccessChecked(true);
-        Toast.error(error.message || "Failed to check process access");
+        Toast.error(error.message || "Failed to check process access.");
       } finally {
         if (active) setLoading(false);
       }
@@ -268,7 +268,7 @@ export default function DoubleCheckPage() {
       setLoading(true);
       stopVoice();
       const response = await fetchData("double-check/scan", { qrText: cleanedQr }, "POST");
-      if (response.error) throw new Error(response.message || "Kanban not found");
+      if (response.error) throw new Error(response.message || "Kanban not found.");
 
       const data = response.data || {};
       setScan({
@@ -288,7 +288,7 @@ export default function DoubleCheckPage() {
       lastScannedRef.current = "";
       setScanText("");
       focusScanInput();
-      Toast.error(error.message || "Kanban not found");
+      Toast.error(error.message || "Kanban not found.");
     } finally {
       setLoading(false);
     }
@@ -328,7 +328,7 @@ export default function DoubleCheckPage() {
         },
         "POST"
       );
-      if (response.error) throw new Error(response.message || "Failed to save double check");
+      if (response.error) throw new Error(response.message || "Failed to save double check.");
 
       const logResponse = await createActionLog({
         action: "CREATE",
@@ -337,14 +337,14 @@ export default function DoubleCheckPage() {
       });
 
       if (logResponse.error) {
-        throw new Error(logResponse.message || "Double check saved, but action log failed");
+        throw new Error("Double check was saved successfully. Action log could not be saved.");
       }
 
-      Toast.success(response.message || "Double check saved");
+      Toast.success("Double check saved successfully.");
       await loadDailySummary();
       resetForNextScan();
     } catch (error) {
-      Toast.error(error.message || "Failed to save double check");
+      Toast.error(error.message || "Failed to save double check.");
     } finally {
       setSaving(false);
     }

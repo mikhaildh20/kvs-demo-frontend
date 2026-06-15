@@ -42,7 +42,7 @@ export default function AddMenuPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to save menu");
+      Toast.error(response.message || "Failed to create menu.");
       return;
     }
 
@@ -55,11 +55,11 @@ export default function AddMenuPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Menu saved, but action log failed");
+      Toast.error("Menu created successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Menu saved successfully");
+    Toast.success("Menu created successfully.");
     router.push("/pages/menu");
   };
 

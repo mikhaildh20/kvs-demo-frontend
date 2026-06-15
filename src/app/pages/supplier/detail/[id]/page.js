@@ -55,7 +55,7 @@ export default function DetailSupplierPage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "Supplier not found");
+        Toast.error(response.message || "Supplier not found.");
         router.replace("/pages/supplier");
         return;
       }
@@ -124,13 +124,13 @@ export default function DetailSupplierPage() {
       });
 
       if (logResponse.error) {
-        throw new Error(logResponse.message || "Supplier customer saved, but action log failed");
+        throw new Error("Supplier customer mapping was saved successfully. Action log could not be saved.");
       }
 
-      Toast.success(response.message || "Supplier customer data saved successfully");
+      Toast.success("Supplier customer mapping saved successfully.");
       router.push("/pages/supplier");
     } catch (error) {
-      Toast.error(error.message || "Failed to save supplier customer data");
+      Toast.error(error.message || "Failed to save supplier customer mapping.");
     } finally {
       setSaving(false);
     }

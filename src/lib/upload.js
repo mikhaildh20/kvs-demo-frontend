@@ -8,7 +8,7 @@ const uploadFile = async (file, folder) => {
     const response = await fetchData("uploads/file", formData, "POST", true);
 
     if (response.error) {
-        throw new Error(response.message || "File upload failed");
+        throw new Error(response.message || "File upload failed.");
     }
 
     return response;

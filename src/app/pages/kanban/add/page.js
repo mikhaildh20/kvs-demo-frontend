@@ -63,12 +63,12 @@ export default function AddKanbanPage() {
             const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
 
             if (selectedFile.size > maxSize) {
-                Toast.error("Failed because the maximum file size is 2MB");
+                Toast.error("Maximum file size is 2 MB.");
                 return;
             }
 
             if(!allowedTypes.includes(selectedFile.type)) {
-                Toast.error("Failed because the file format must be PDF, JPEG, or PNG");
+                Toast.error("File format must be PDF, JPEG, or PNG.");
                 return;
             }
         }
@@ -93,7 +93,7 @@ export default function AddKanbanPage() {
 
                 setColors(toOptions(colorResponse.data?.data || [], (item) => item.Name || "-"));
             } catch (error) {
-                Toast.error(getKanbanErrorMessage(error, "Failed to load form options"));
+                Toast.error(getKanbanErrorMessage(error, "Failed to load form options."));
             } finally {
                 if (isActive) setLoading(false);
             }
@@ -121,7 +121,7 @@ export default function AddKanbanPage() {
 
             if(uploadInstructionResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(uploadInstructionResult, "Failed because the Instruction Work file could not be uploaded"));
+                Toast.error(getKanbanErrorMessage(uploadInstructionResult, "Instruction Work file could not be uploaded."));
                 return;
             }
 
@@ -131,7 +131,7 @@ export default function AddKanbanPage() {
 
             if(uploadSequenceCheckResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(uploadSequenceCheckResult, "Failed because the Sequence Check file could not be uploaded"));
+                Toast.error(getKanbanErrorMessage(uploadSequenceCheckResult, "Sequence Check file could not be uploaded."));
                 return;
             }
 
@@ -141,7 +141,7 @@ export default function AddKanbanPage() {
 
             if(uploadLogisticResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(uploadLogisticResult, "Failed because the Logistic Guide file could not be uploaded"));
+                Toast.error(getKanbanErrorMessage(uploadLogisticResult, "Logistic Guide file could not be uploaded."));
                 return;
             }
 
@@ -151,7 +151,7 @@ export default function AddKanbanPage() {
 
             if(generateSequenceVoiceResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(generateSequenceVoiceResult, "Failed because the Sequence Check voice could not be generated"));
+                Toast.error(getKanbanErrorMessage(generateSequenceVoiceResult, "Sequence Check voice could not be generated."));
                 return;
             }
 
@@ -161,7 +161,7 @@ export default function AddKanbanPage() {
 
             if(generateLogisticVoiceResult.error){
                 setSaving(false);
-                Toast.error(getKanbanErrorMessage(generateLogisticVoiceResult, "Failed because the Logistic Guide voice could not be generated"));
+                Toast.error(getKanbanErrorMessage(generateLogisticVoiceResult, "Logistic Guide voice could not be generated."));
                 return;
             }
 
@@ -191,13 +191,13 @@ export default function AddKanbanPage() {
             });
 
             if (logResponse.error) {
-                throw new Error(logResponse.message || "Kanban saved, but action log failed");
+                throw new Error("Kanban created successfully. Action log could not be saved.");
             }
 
-            Toast.success(response.message || "Kanban saved successfully");
+            Toast.success("Kanban created successfully.");
             router.push("/pages/kanban");
         } catch (error) {
-            Toast.error(getKanbanErrorMessage(error, "Failed to save kanban"));
+            Toast.error(getKanbanErrorMessage(error, "Failed to create kanban."));
             console.error(error)
         } finally {
             setSaving(false);

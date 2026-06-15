@@ -95,7 +95,7 @@ export default function LinePage() {
         setTotalData(total);
         setCurrentPage(page);
       } catch (err) {
-        Toast.error(err.message || "Failed to load data");
+        Toast.error(err.message || "Failed to load data.");
         setDataLine([]);
         setTotalData(0);
       } finally {
@@ -175,13 +175,13 @@ export default function LinePage() {
         });
 
         if (logResponse.error) {
-          throw new Error(logResponse.message || "Line status updated, but action log failed");
+          throw new Error("Line status updated successfully. Action log could not be saved.");
         }
 
-        Toast.success(response.message || "Line status updated successfully");
+        Toast.success("Line status updated successfully.");
         await loadData(currentPage, sortBy, search, sortStatus);
       } catch (err) {
-        Toast.error(err.message || "Failed to update line status");
+        Toast.error(err.message || "Failed to update line status.");
       } finally {
         setLoading(false);
       }

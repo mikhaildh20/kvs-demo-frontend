@@ -35,11 +35,11 @@ export default function EditUserPage() {
     ]).then(([roleResp, userResp]) => {
       setLoading(false);
       if (roleResp.error) {
-        Toast.error(roleResp.message || "Failed to load role options");
+        Toast.error(roleResp.message || "Failed to load role options.");
         return;
       }
       if (userResp.error) {
-        Toast.error(userResp.message || "User not found");
+        Toast.error(userResp.message || "User not found.");
         router.replace("/pages/user");
         return;
       }
@@ -63,8 +63,8 @@ export default function EditUserPage() {
       setSaving(false);
       Toast.error(
         String(response.message || "").toLowerCase().includes("username")
-          ? "Username unavailable"
-          : response.message || "Failed to update user"
+          ? "Username unavailable."
+          : response.message || "Failed to update user."
       );
       return;
     }
@@ -76,7 +76,7 @@ export default function EditUserPage() {
     });
 
     setSaving(false);
-    Toast.success(response.message || "User updated successfully");
+    Toast.success("User updated successfully.");
     router.push("/pages/user");
   };
 

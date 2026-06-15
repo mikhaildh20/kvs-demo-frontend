@@ -49,13 +49,13 @@ export default function BarcodeDeliveryScanReportDetailPage() {
       if (!detailId) throw new Error("Report detail id is invalid");
 
       const response = await fetchData(`barcode-delivery-scans/report/${encodeURIComponent(detailId)}`, {}, "GET");
-      if (response.error) throw new Error(response.message || "Failed to load report detail");
+      if (response.error) throw new Error(response.message || "Failed to load report detail.");
 
       setHeader({ shipDate: response.data?.shipDate || "", poNo: response.data?.poNo || "" });
       setRows(response.data?.data || []);
       setCurrentPage(1);
     } catch (error) {
-      Toast.error(error.message || "Failed to load report detail");
+      Toast.error(error.message || "Failed to load report detail.");
       setRows([]);
     } finally {
       setLoading(false);

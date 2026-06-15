@@ -98,7 +98,7 @@ export default function LogPage() {
         setTotalData(total);
         setCurrentPage(page);
       } catch (err) {
-        Toast.error(err.message || "Failed to load action logs");
+        Toast.error(err.message || "Failed to load action logs.");
         setDataLog([]);
         setTotalData(0);
       } finally {

@@ -79,7 +79,7 @@ export default function CustomerPage() {
                 setTotalData(total);
                 setCurrentPage(page);
             } catch (error) {
-                Toast.error(error.message || "Failed to load data");
+                Toast.error(error.message || "Failed to load data.");
                 setDataCustomer([]);
                 setTotalData(0);
             } finally {
@@ -159,13 +159,13 @@ export default function CustomerPage() {
                 });
 
                 if(logResponse.error){
-                    throw new Error(logResponse.message || "Customer status updated, but action log failed");
+                    throw new Error("Customer status updated successfully. Action log could not be saved.");
                 }
 
-                Toast.success(response.message || "Customer status updated successfully");
+                Toast.success("Customer status updated successfully.");
                 await loadData(currentPage, sortBy, search, sortStatus);
             } catch (error) {
-                Toast.error(error.message || "Failed to update customer status");
+                Toast.error(error.message || "Failed to update customer status.");
             } finally {
                 setLoading(false);
             }

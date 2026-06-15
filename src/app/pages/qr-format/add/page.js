@@ -59,7 +59,7 @@ export default function AddQrFormatPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to save QR format");
+      Toast.error(response.message || "Failed to create QR format.");
       return;
     }
 
@@ -72,11 +72,11 @@ export default function AddQrFormatPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "QR format saved, but action log failed");
+      Toast.error("QR format created successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "QR format saved successfully");
+    Toast.success("QR format created successfully.");
     router.push("/pages/qr-format");
   };
 

@@ -34,7 +34,7 @@ export default function EditSupplierPage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "Supplier not found");
+        Toast.error(response.message || "Supplier not found.");
         router.replace("/pages/supplier");
         return;
       }
@@ -56,7 +56,7 @@ export default function EditSupplierPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to update supplier");
+      Toast.error(response.message || "Failed to update supplier.");
       return;
     }
 
@@ -69,11 +69,11 @@ export default function EditSupplierPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Supplier updated, but action log failed");
+      Toast.error("Supplier updated successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Supplier updated successfully");
+    Toast.success("Supplier updated successfully.");
     router.push("/pages/supplier");
   };
 

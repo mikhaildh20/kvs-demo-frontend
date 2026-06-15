@@ -94,7 +94,7 @@ export default function ColorPage() {
                 setTotalData(total);
                 setCurrentPage(page);
             } catch (error) {
-                Toast.error(error.message || "Failed to load data");
+                Toast.error(error.message || "Failed to load data.");
                 setDataColor([]);
                 setTotalData(0);
             } finally{
@@ -169,13 +169,13 @@ export default function ColorPage() {
                 });
 
                 if(logResponse.error){
-                    throw new Error(logResponse.message || "Color status updated, but action log failed");
+                    throw new Error("Color status updated successfully. Action log could not be saved.");
                 }
 
-                Toast.success(response.message || "Color status updated successfully");
+                Toast.success("Color status updated successfully.");
                 await loadData(currentPage, sortBy, search, sortStatus);
             } catch (error) {
-                Toast.error(error.message || "Failed to update color status");
+                Toast.error(error.message || "Failed to update color status.");
             } finally {
                 setLoading(false);
             }

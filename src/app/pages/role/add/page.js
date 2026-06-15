@@ -23,7 +23,7 @@ export default function AddRolePage() {
 
         if (response.error) {
             setSaving(false);
-            Toast.error(response.message || "Failed to save role");
+            Toast.error(response.message || "Failed to create role.");
             return;
         }
 
@@ -36,11 +36,11 @@ export default function AddRolePage() {
         setSaving(false);
 
         if (logResponse.error) {
-            Toast.error(logResponse.message || "Role saved, but action log failed");
+            Toast.error("Role created successfully. Action log could not be saved.");
             return;
         }
 
-        Toast.success(response.message || "Role saved successfully");
+        Toast.success("Role created successfully.");
         router.push("/pages/role");
     };
 

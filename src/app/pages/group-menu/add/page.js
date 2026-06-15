@@ -23,7 +23,7 @@ export default function AddGroupMenuPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to save group menu");
+      Toast.error(response.message || "Failed to create group menu.");
       return;
     }
 
@@ -36,11 +36,11 @@ export default function AddGroupMenuPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Group menu saved, but action log failed");
+      Toast.error("Group menu created successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Group menu saved successfully");
+    Toast.success("Group menu created successfully.");
     router.push("/pages/group-menu");
   };
 

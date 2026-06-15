@@ -94,7 +94,7 @@ export default function SupplierPage() {
         setTotalData(total);
         setCurrentPage(page);
       } catch (error) {
-        Toast.error(error.message || "Failed to load data");
+        Toast.error(error.message || "Failed to load data.");
         setDataSupplier([]);
         setTotalData(0);
       } finally {
@@ -174,13 +174,13 @@ export default function SupplierPage() {
         });
 
         if (logResponse.error) {
-          throw new Error(logResponse.message || "Supplier status updated, but action log failed");
+          throw new Error("Supplier status updated successfully. Action log could not be saved.");
         }
 
-        Toast.success(response.message || "Supplier status updated successfully");
+        Toast.success("Supplier status updated successfully.");
         await loadData(currentPage, sortBy, search, sortStatus);
       } catch (error) {
-        Toast.error(error.message || "Failed to update supplier status");
+        Toast.error(error.message || "Failed to update supplier status.");
       } finally {
         setLoading(false);
       }

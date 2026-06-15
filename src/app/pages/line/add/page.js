@@ -23,7 +23,7 @@ export default function AddLinePage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to save line");
+      Toast.error(response.message || "Failed to create line.");
       return;
     }
 
@@ -36,11 +36,11 @@ export default function AddLinePage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Line saved, but action log failed");
+      Toast.error("Line created successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Line saved successfully");
+    Toast.success("Line created successfully.");
     router.push("/pages/line");
   };
 

@@ -61,7 +61,7 @@ export default function DetailKanbanPage() {
             setLoading(false);
 
             if (response.error) {
-                Toast.error(response.message || "Kanban not found");
+                Toast.error(response.message || "Kanban not found.");
                 router.replace("/pages/kanban");
                 return;
             }

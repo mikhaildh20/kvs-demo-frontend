@@ -70,7 +70,7 @@ export default function BarcodeDeliveryScanImportPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load barcode delivery scan data");
+      if (response.error) throw new Error(response.message || "Failed to load barcode delivery scan data.");
 
       const data = response.data?.data || [];
       setRows(
@@ -93,7 +93,7 @@ export default function BarcodeDeliveryScanImportPage() {
       setTotalData(response.data?.totalData || 0);
       setCurrentPage(page);
     } catch (error) {
-      Toast.error(error.message || "Failed to load barcode delivery scan data");
+      Toast.error(error.message || "Failed to load barcode delivery scan data.");
       setRows([]);
       setTotalData(0);
     } finally {
@@ -154,7 +154,7 @@ export default function BarcodeDeliveryScanImportPage() {
 
   const handleImport = async () => {
     if (!importFile) {
-      Toast.error("Choose an Excel file first");
+      Toast.error("Choose an Excel file first.");
       return;
     }
 
@@ -164,7 +164,7 @@ export default function BarcodeDeliveryScanImportPage() {
       formData.append("file", importFile);
 
       const response = await fetchData("barcode-delivery-scans/import", formData, "POST", true);
-      if (response.error) throw new Error(response.message || "Failed to import barcode delivery scan");
+      if (response.error) throw new Error(response.message || "Failed to import barcode delivery scan data.");
 
       const logResponse = await createActionLog({
         action: "IMPORT",
@@ -173,13 +173,13 @@ export default function BarcodeDeliveryScanImportPage() {
         menuPath: "/pages/barcode-delivery-scan-import",
       });
 
-      if (logResponse.error) throw new Error(logResponse.message || "Import saved, but action log failed");
+      if (logResponse.error) throw new Error("Import completed successfully. Action log could not be saved.");
 
-      Toast.success(response.message || "Barcode delivery scan imported successfully");
+      Toast.success("Barcode delivery scan data imported successfully.");
       handleCloseImport();
       await loadData(1, sortBy, search, status, shipDate);
     } catch (error) {
-      Toast.error(error.message || "Failed to import barcode delivery scan");
+      Toast.error(error.message || "Failed to import barcode delivery scan data.");
     } finally {
       setLoading(false);
     }

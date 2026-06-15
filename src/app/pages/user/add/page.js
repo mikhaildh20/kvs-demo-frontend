@@ -47,7 +47,7 @@ export default function AddUserPage() {
     fetchData("users/roles", {}, "GET").then((response) => {
       setLoading(false);
       if (response.error) {
-        Toast.error(response.message || "Failed to load role options");
+        Toast.error(response.message || "Failed to load role options.");
         return;
       }
       setRoles(response.data || []);
@@ -72,8 +72,8 @@ export default function AddUserPage() {
       setSaving(false);
       Toast.error(
         String(response.message || "").toLowerCase().includes("username")
-          ? "Username unavailable"
-          : response.message || "Failed to save user"
+          ? "Username unavailable."
+          : response.message || "Failed to create user."
       );
       return;
     }
@@ -83,7 +83,7 @@ export default function AddUserPage() {
 
     setSaving(false);
     await showGeneratedPasswordAlert(generatedPassword);
-    Toast.success(response.message || "User saved successfully");
+    Toast.success("User created successfully.");
     router.push("/pages/user");
   };
 

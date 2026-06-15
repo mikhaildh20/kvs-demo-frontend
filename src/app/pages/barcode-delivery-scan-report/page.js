@@ -167,7 +167,7 @@ export default function BarcodeDeliveryScanReportPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load report");
+      if (response.error) throw new Error(response.message || "Failed to load report.");
 
       setRows(response.data?.data || []);
       setSummary(response.data?.summary || { totalPo: 0, totalBox: 0, scannedBox: 0, remainingBox: 0, donePo: 0, openPo: 0 });
@@ -175,7 +175,7 @@ export default function BarcodeDeliveryScanReportPage() {
       setCurrentPage(page);
       setAppliedFilters(nextFilters);
     } catch (error) {
-      Toast.error(error.message || "Failed to load report");
+      Toast.error(error.message || "Failed to load report.");
       setRows([]);
       setTotalData(0);
       setSummary({ totalPo: 0, totalBox: 0, scannedBox: 0, remainingBox: 0, donePo: 0, openPo: 0 });
@@ -203,10 +203,10 @@ export default function BarcodeDeliveryScanReportPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load PO list");
+      if (response.error) throw new Error(response.message || "Failed to load PO list.");
       setPoOptions(response.data?.data || []);
     } catch (error) {
-      Toast.error(error.message || "Failed to load PO list");
+      Toast.error(error.message || "Failed to load PO list.");
       setPoOptions([]);
     }
   }, []);
@@ -247,7 +247,7 @@ export default function BarcodeDeliveryScanReportPage() {
 
   const handleApply = () => {
     if (filters.dateFrom && filters.dateTo && filters.dateFrom > filters.dateTo) {
-      Toast.error("Date From cannot be greater than Date To");
+      Toast.error("Date From cannot be greater than Date To.");
       return;
     }
 
@@ -270,7 +270,7 @@ export default function BarcodeDeliveryScanReportPage() {
 
   const handleExport = async () => {
     if (totalData === 0) {
-      Toast.error("No data to export");
+      Toast.error("No data to export.");
       return;
     }
 
@@ -297,11 +297,11 @@ export default function BarcodeDeliveryScanReportPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load export data");
+      if (response.error) throw new Error(response.message || "Failed to load export data.");
 
       exportExcel({ rows: response.data?.data || [], summary: response.data?.summary || summary, filters: appliedFilters });
     } catch (error) {
-      Toast.error(error.message || "Failed to export report");
+      Toast.error(error.message || "Failed to export report.");
     }
   };
 

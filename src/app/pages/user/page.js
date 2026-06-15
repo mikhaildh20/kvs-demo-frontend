@@ -122,7 +122,7 @@ export default function UserPage() {
       setTotalData(total);
       setCurrentPage(page);
     } catch (error) {
-      Toast.error(error.message || "Failed to load data");
+      Toast.error(error.message || "Failed to load data.");
       setDataUser([]);
       setTotalData(0);
     } finally {
@@ -170,10 +170,10 @@ export default function UserPage() {
       if (response.error) throw new Error(response.message);
 
       await createActionLog({ action: "UPDATE", oldValue: `User: ${row?.Username}`, newValue: `User: ${row?.Username}` });
-      Toast.success(response.message || "User status updated successfully");
+      Toast.success("User status updated successfully.");
       await loadData(currentPage, sortBy, search, sortStatus);
     } catch (error) {
-      Toast.error(error.message || "Failed to update user status");
+      Toast.error(error.message || "Failed to update user status.");
     } finally {
       setLoading(false);
     }
@@ -196,10 +196,10 @@ export default function UserPage() {
 
       await createActionLog({ action: "UPDATE", oldValue: `Reset Password User: ${row?.Username}`, newValue: `Reset Password User: ${row?.Username}` });
       await showGeneratedPasswordAlert(response.data?.generatedPassword || "-");
-      Toast.success(response.message || "Password reset successfully");
+      Toast.success("Password reset successfully.");
       await loadData(currentPage, sortBy, search, sortStatus);
     } catch (error) {
-      Toast.error(error.message || "Failed to reset password");
+      Toast.error(error.message || "Failed to reset password.");
     } finally {
       setLoading(false);
     }
@@ -225,10 +225,10 @@ export default function UserPage() {
         oldValue: `User: ${row?.Username}, Locked: Yes`,
         newValue: `User: ${row?.Username}, Locked: No`,
       });
-      Toast.success(response.message || "User unlocked successfully");
+      Toast.success("User unlocked successfully.");
       await loadData(currentPage, sortBy, search, sortStatus);
     } catch (error) {
-      Toast.error(error.message || "Failed to unlock user");
+      Toast.error(error.message || "Failed to unlock user.");
     } finally {
       setLoading(false);
     }

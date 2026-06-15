@@ -49,7 +49,7 @@ export default function DetailLinePage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "Line not found");
+        Toast.error(response.message || "Line not found.");
         router.replace("/pages/line");
         return;
       }
@@ -116,13 +116,13 @@ export default function DetailLinePage() {
       });
 
       if (logResponse.error) {
-        throw new Error(logResponse.message || "Line user saved, but action log failed");
+        throw new Error("Line user assignment was saved successfully. Action log could not be saved.");
       }
 
-      Toast.success(response.message || "Line user data saved successfully");
+      Toast.success("Line user assignment saved successfully.");
       router.push("/pages/line");
     } catch (error) {
-      Toast.error(error.message || "Failed to save line user data");
+      Toast.error(error.message || "Failed to save line user assignment.");
     } finally {
       setSaving(false);
     }

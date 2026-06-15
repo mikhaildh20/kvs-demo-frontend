@@ -66,7 +66,7 @@ export default function DetailRolePage() {
             setLoading(false);
 
             if (response.error) {
-                Toast.error(response.message || "Role not found");
+                Toast.error(response.message || "Role not found.");
                 router.replace("/pages/role");
                 return;
             }
@@ -160,13 +160,13 @@ export default function DetailRolePage() {
             });
 
             if (logResponse.error) {
-                throw new Error(logResponse.message || "Role menu saved, but action log failed");
+                throw new Error("Role menu access was saved successfully. Action log could not be saved.");
             }
 
-            Toast.success(response.message || "Role menu data saved successfully");
+            Toast.success("Role menu access saved successfully.");
             router.push("/pages/role");
         } catch (error) {
-            Toast.error(error.message || "Failed to save role menu data");
+            Toast.error(error.message || "Failed to save role menu access.");
         } finally {
             setSaving(false);
         }

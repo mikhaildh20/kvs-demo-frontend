@@ -26,7 +26,7 @@ export default function AddCustomerPage() {
 
         if (response.error) {
             setSaving(false);
-            Toast.error(response.message || "Failed to save customer");
+            Toast.error(response.message || "Failed to create customer.");
             return;
         }
 
@@ -39,11 +39,11 @@ export default function AddCustomerPage() {
         setSaving(false);
 
         if (logResponse.error) {
-            Toast.error(logResponse.message || "Customer saved, but action log failed");
+            Toast.error("Customer created successfully. Action log could not be saved.");
             return;
         }
 
-        Toast.success(response.message || "Customer saved successfully");
+        Toast.success("Customer created successfully.");
         router.push("/pages/customer");
     }
 

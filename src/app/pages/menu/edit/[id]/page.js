@@ -47,7 +47,7 @@ export default function EditMenuPage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "Menu not found");
+        Toast.error(response.message || "Menu not found.");
         router.replace("/pages/menu");
         return;
       }
@@ -79,7 +79,7 @@ export default function EditMenuPage() {
 
     if (response.error) {
       setSaving(false);
-      Toast.error(response.message || "Failed to update menu");
+      Toast.error(response.message || "Failed to update menu.");
       return;
     }
 
@@ -92,11 +92,11 @@ export default function EditMenuPage() {
     setSaving(false);
 
     if (logResponse.error) {
-      Toast.error(logResponse.message || "Menu updated, but action log failed");
+      Toast.error("Menu updated successfully. Action log could not be saved.");
       return;
     }
 
-    Toast.success(response.message || "Menu updated successfully");
+    Toast.success("Menu updated successfully.");
     router.push("/pages/menu");
   };
 

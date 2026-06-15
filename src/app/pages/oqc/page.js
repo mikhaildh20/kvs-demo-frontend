@@ -99,7 +99,7 @@ export default function OQCPage() {
       setTotalData(total);
       setCurrentPage(page);
     } catch (error) {
-      Toast.error(error.message || "Failed to load data");
+      Toast.error(error.message || "Failed to load data.");
       setDataOQC([]);
       setTotalData(0);
     } finally {
@@ -139,12 +139,12 @@ export default function OQCPage() {
     try {
       setLoading(true);
       const response = await fetchData(`oqcs/${encryptIdUrl(id)}/preview`, {}, "GET");
-      if (response.error) throw new Error(response.message || "Failed to load print preview");
+      if (response.error) throw new Error(response.message || "Failed to load print preview.");
 
       setPrintPreviewData(response.data);
       setPrintPreviewOpen(true);
     } catch (error) {
-      Toast.error(error.message || "Failed to load print preview");
+      Toast.error(error.message || "Failed to load print preview.");
     } finally {
       setLoading(false);
     }
@@ -166,7 +166,7 @@ export default function OQCPage() {
       setPrintPreviewOpen(false);
       router.push(`/pages/oqc/print/${encryptIdUrl(selectedPrintRow?.Id || selectedPrintRow?.id)}`);
     } catch (error) {
-      Toast.error(error.message || "Failed to save print log");
+      Toast.error(error.message || "Failed to save print log.");
     } finally {
       setLoading(false);
     }

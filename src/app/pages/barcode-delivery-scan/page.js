@@ -248,7 +248,7 @@ export default function BarcodeDeliveryScanPage() {
     }
 
     const response = await fetchData("barcode-delivery-scans/po-options", { ShipDate: dateValue }, "GET");
-    if (response.error) throw new Error(response.message || "Failed to load PO list");
+    if (response.error) throw new Error(response.message || "Failed to load PO list.");
     const rows = response.data || [];
     const openRows = rows.filter((item) => Number(item.ScannedKanban || 0) < Number(item.TotalKanban || 0));
     setAllPoOptions(rows);
@@ -263,7 +263,7 @@ export default function BarcodeDeliveryScanPage() {
     }
 
     const response = await fetchData("barcode-delivery-scans/kanban-options", { ShipDate: dateValue, PoNo: poNo }, "GET");
-    if (response.error) throw new Error(response.message || "Failed to load kanban list");
+    if (response.error) throw new Error(response.message || "Failed to load kanban list.");
     const rows = response.data || [];
     setKanbanOptions(rows);
     return rows;
@@ -275,7 +275,7 @@ export default function BarcodeDeliveryScanPage() {
         setLoading(true);
         await loadPoOptions(today());
       } catch (error) {
-        Toast.error(error.message || "Failed to load PO list");
+        Toast.error(error.message || "Failed to load PO list.");
       } finally {
         setLoading(false);
       }
@@ -293,7 +293,7 @@ export default function BarcodeDeliveryScanPage() {
       setLoading(true);
       await loadPoOptions(value);
     } catch (error) {
-      Toast.error(error.message || "Failed to load PO list");
+      Toast.error(error.message || "Failed to load PO list.");
     } finally {
       setLoading(false);
     }
@@ -309,7 +309,7 @@ export default function BarcodeDeliveryScanPage() {
       setLoading(true);
       await loadKanbanOptions(shipDate, poNo);
     } catch (error) {
-      Toast.error(error.message || "Failed to load kanban list");
+      Toast.error(error.message || "Failed to load kanban list.");
     } finally {
       setLoading(false);
     }
@@ -432,7 +432,7 @@ export default function BarcodeDeliveryScanPage() {
           await handleLockedResponse(response.message);
           return null;
         }
-        throw new Error(response.message || "Failed to resolve PIK barcode");
+        throw new Error(response.message || "Failed to resolve PIK barcode.");
       }
 
       const resolvedTarget = response.data || emptyTarget;
@@ -440,7 +440,7 @@ export default function BarcodeDeliveryScanPage() {
       playVoice(resolvedTarget.LogisticGuideVoicePath);
       return resolvedTarget;
     } catch (error) {
-      Toast.error(error.message || "Failed to resolve PIK barcode");
+      Toast.error(error.message || "Failed to resolve PIK barcode.");
       return null;
     } finally {
       setLoading(false);
@@ -454,7 +454,7 @@ export default function BarcodeDeliveryScanPage() {
         : scanValuesRef.current;
 
     if (!target.Id) {
-      Toast.error("Choose kanban first");
+      Toast.error("Choose kanban first.");
       return;
     }
 
@@ -495,9 +495,9 @@ export default function BarcodeDeliveryScanPage() {
         menuPath: "/pages/barcode-delivery-scan",
       });
 
-      if (logResponse.error) throw new Error(logResponse.message || "Scan saved, but action log failed");
+      if (logResponse.error) throw new Error("Scan was saved successfully. Action log could not be saved.");
 
-      Toast.success(response.message || "Barcode delivery scan saved");
+      Toast.success("Barcode delivery scan saved successfully.");
       setTarget(emptyTarget);
       scanValuesRef.current = emptyScanValues;
       setScanValues(emptyScanValues);
@@ -517,7 +517,7 @@ export default function BarcodeDeliveryScanPage() {
         resetTarget();
       }
     } catch (error) {
-      Toast.error(error.message || "Failed to save barcode delivery scan");
+      Toast.error(error.message || "Failed to save barcode delivery scan.");
     } finally {
       setLoading(false);
     }
@@ -590,7 +590,7 @@ export default function BarcodeDeliveryScanPage() {
 
   const handleOpenReport = async () => {
     if (!shipDate) {
-      Toast.error("Choose ship date first");
+      Toast.error("Choose ship date first.");
       return;
     }
 
@@ -607,7 +607,7 @@ export default function BarcodeDeliveryScanPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load report");
+      if (response.error) throw new Error(response.message || "Failed to load report.");
 
       const rows = response.data?.data || [];
       const detailPairs = await Promise.all(
@@ -631,7 +631,7 @@ export default function BarcodeDeliveryScanPage() {
       setReportSummary(response.data?.summary || { totalPo: 0, totalBox: 0, scannedBox: 0, remainingBox: 0, donePo: 0, openPo: 0 });
       setReportOpen(true);
     } catch (error) {
-      Toast.error(error.message || "Failed to load report");
+      Toast.error(error.message || "Failed to load report.");
     } finally {
       setLoading(false);
     }
@@ -639,7 +639,7 @@ export default function BarcodeDeliveryScanPage() {
 
   const handleExportReport = async () => {
     if (reportRows.length === 0) {
-      Toast.error("No data to export");
+      Toast.error("No data to export.");
       return;
     }
 
@@ -660,7 +660,7 @@ export default function BarcodeDeliveryScanPage() {
         shipDate,
       });
     } catch (error) {
-      Toast.error(error.message || "Failed to export report");
+      Toast.error(error.message || "Failed to export report.");
     }
   };
 

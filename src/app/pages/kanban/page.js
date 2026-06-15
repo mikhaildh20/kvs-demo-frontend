@@ -136,7 +136,7 @@ export default function KanbanPage(){
                 setTotalData(total);
                 setCurrentPage(page);
             }catch(error){
-                Toast.error(error.message || "Failed to load data");
+                Toast.error(error.message || "Failed to load data.");
                 setDataKanban([]);
                 setDataKanbanRaw([]);
                 setTotalData(0);
@@ -219,13 +219,13 @@ export default function KanbanPage(){
                 });
 
                 if(logResponse.error){
-                    throw new Error(logResponse.message || "Kanban status updated, but action log failed");
+                    throw new Error("Kanban status updated successfully. Action log could not be saved.");
                 }
 
-                Toast.success(response.message || "Kanban status updated successfully");
+                Toast.success("Kanban status updated successfully.");
                 await loadData(currentPage, sortBy, search, sortSpecial, sortStatus);
             }catch(error){
-                Toast.error(error.message || "Failed to update kanban status");
+                Toast.error(error.message || "Failed to update kanban status.");
             } finally {
                 setLoading(false);
             }
@@ -264,13 +264,13 @@ export default function KanbanPage(){
                 });
 
                 if(logResponse.error){
-                    throw new Error(logResponse.message || "Special kanban updated, but action log failed");
+                    throw new Error("Special kanban updated successfully. Action log could not be saved.");
                 }
 
-                Toast.success(response.message || "Special kanban updated successfully");
+                Toast.success("Special kanban status updated successfully.");
                 await loadData(currentPage, sortBy, search, sortSpecial, sortStatus);
             }catch(error){
-                Toast.error(error.message || "Failed to update special kanban");
+                Toast.error(error.message || "Failed to update special kanban.");
             } finally {
                 setLoading(false);
             }
@@ -299,7 +299,7 @@ export default function KanbanPage(){
 
     const handleImport = useCallback(async () => {
         if (!importFileA || !importFileB) {
-            Toast.error("Select Excel file A and Excel file B first");
+            Toast.error("Select Excel file A and Excel file B first.");
             return;
         }
 
@@ -322,11 +322,11 @@ export default function KanbanPage(){
                 newValue: `Kanban import: ${response.data?.total ?? 0} rows`,
             });
 
-            Toast.success(response.message || "Kanban imported successfully");
+            Toast.success("Kanban data imported successfully.");
             handleCloseImport();
             await loadData(1, sortBy, search, sortSpecial, sortStatus);
         } catch (error) {
-            Toast.error(error.message || "Failed to import kanban");
+            Toast.error(error.message || "Failed to import kanban data.");
             console.log(error);
         } finally {
             setLoading(false);

@@ -91,7 +91,7 @@ export default function GroupMenuPage() {
       setTotalData(total);
       setCurrentPage(page);
     } catch (error) {
-      Toast.error(error.message || "Failed to load data");
+      Toast.error(error.message || "Failed to load data.");
       setDataGroupMenu([]);
       setTotalData(0);
     } finally {
@@ -151,13 +151,13 @@ export default function GroupMenuPage() {
       });
 
       if (logResponse.error) {
-        throw new Error(logResponse.message || "Group menu status updated, but action log failed");
+        throw new Error("Group menu status updated successfully. Action log could not be saved.");
       }
 
-      Toast.success(response.message || "Group menu status updated successfully");
+      Toast.success("Group menu status updated successfully.");
       await loadData(currentPage, sortBy, search, sortStatus);
     } catch (error) {
-      Toast.error(error.message || "Failed to update group menu status");
+      Toast.error(error.message || "Failed to update group menu status.");
     } finally {
       setLoading(false);
     }

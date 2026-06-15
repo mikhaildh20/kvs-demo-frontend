@@ -49,7 +49,7 @@ export default function UserDetailPage() {
     fetchData(`users/${encryptedId}`, {}, "GET").then((response) => {
       setLoading(false);
       if (response.error) {
-        Toast.error(response.message || "User not found");
+        Toast.error(response.message || "User not found.");
         router.replace("/pages/user");
         return;
       }
@@ -72,13 +72,13 @@ export default function UserDetailPage() {
     setLoading(false);
 
     if (response.error) {
-      Toast.error(response.message || "Failed to reset password");
+      Toast.error(response.message || "Failed to reset password.");
       return;
     }
 
     await createActionLog({ action: "UPDATE", oldValue: `Reset Password User: ${user?.Username}`, newValue: `Reset Password User: ${user?.Username}` });
     await showGeneratedPasswordAlert(response.data?.generatedPassword || "-");
-    Toast.success(response.message || "Password reset successfully");
+    Toast.success("Password reset successfully.");
     router.push("/pages/user");
   };
 

@@ -107,7 +107,7 @@ export default function MenuPage() {
         setTotalData(total);
         setCurrentPage(page);
       } catch (err) {
-        Toast.error(err.message || "Failed to load menu data");
+        Toast.error(err.message || "Failed to load menu data.");
         setDataMenu([]);
         setTotalData(0);
       } finally {
@@ -182,13 +182,13 @@ export default function MenuPage() {
         });
 
         if (logResponse.error) {
-          throw new Error(logResponse.message || "Menu status updated, but action log failed");
+          throw new Error("Menu status updated successfully. Action log could not be saved.");
         }
 
-        Toast.success(response.message || "Menu status updated successfully");
+        Toast.success("Menu status updated successfully.");
         await loadData(currentPage, sortBy, search, sortStatus);
       } catch (err) {
-        Toast.error(err.message || "Failed to update menu status");
+        Toast.error(err.message || "Failed to update menu status.");
       } finally {
         setLoading(false);
       }

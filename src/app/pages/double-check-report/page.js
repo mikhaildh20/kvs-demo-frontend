@@ -209,13 +209,13 @@ export default function DoubleCheckReportPage() {
         fetchData("kanbans", { Status: 1, PageNumber: 1, PageSize: 1000 }, "GET"),
       ]);
 
-      if (lineResponse.error) throw new Error(lineResponse.message || "Failed to load lines");
-      if (kanbanResponse.error) throw new Error(kanbanResponse.message || "Failed to load kanbans");
+      if (lineResponse.error) throw new Error(lineResponse.message || "Failed to load lines.");
+      if (kanbanResponse.error) throw new Error(kanbanResponse.message || "Failed to load kanbans.");
 
       setLines(toOptions(lineResponse.data?.data || [], (item) => item.Code || "-"));
       setKanbans(kanbanResponse.data?.data || []);
     } catch (error) {
-      Toast.error(error.message || "Failed to load filter options");
+      Toast.error(error.message || "Failed to load filter options.");
     }
   }, []);
 
@@ -235,7 +235,7 @@ export default function DoubleCheckReportPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load report");
+      if (response.error) throw new Error(response.message || "Failed to load report.");
 
       setRows(response.data?.data || []);
       setSummary(response.data?.summary || { totalQty: 0, allLineQty: 0, totalOK: 0, totalNG: 0, ngRatio: 0 });
@@ -243,7 +243,7 @@ export default function DoubleCheckReportPage() {
       setCurrentPage(page);
       setAppliedFilters(nextFilters);
     } catch (error) {
-      Toast.error(error.message || "Failed to load report");
+      Toast.error(error.message || "Failed to load report.");
       setRows([]);
       setTotalData(0);
       setSummary({ totalQty: 0, allLineQty: 0, totalOK: 0, totalNG: 0, ngRatio: 0 });
@@ -289,7 +289,7 @@ export default function DoubleCheckReportPage() {
 
   const handleApply = () => {
     if (filters.dateFrom && filters.dateTo && filters.dateFrom > filters.dateTo) {
-      Toast.error("Date From cannot be greater than Date To");
+      Toast.error("Date From cannot be greater than Date To.");
       return;
     }
 
@@ -308,7 +308,7 @@ export default function DoubleCheckReportPage() {
 
   const handleExport = async () => {
     if (totalData === 0) {
-      Toast.error("No data to export");
+      Toast.error("No data to export.");
       return;
     }
 
@@ -336,11 +336,11 @@ export default function DoubleCheckReportPage() {
         "GET"
       );
 
-      if (response.error) throw new Error(response.message || "Failed to load export data");
+      if (response.error) throw new Error(response.message || "Failed to load export data.");
 
       exportExcel({ rows: response.data?.data || [], summary: response.data?.summary || summary, filters: appliedFilters });
     } catch (error) {
-      Toast.error(error.message || "Failed to export report");
+      Toast.error(error.message || "Failed to export report.");
     }
   };
 

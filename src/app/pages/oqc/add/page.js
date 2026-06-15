@@ -61,15 +61,15 @@ export default function AddOQCPage() {
       setLoading(true);
 
       const lotResponse = await fetchData("matrix/generate-lot", {}, "GET");
-      if (lotResponse.error) throw new Error(lotResponse.message || "Failed to generate lot");
+      if (lotResponse.error) throw new Error(lotResponse.message || "Failed to generate lot.");
 
       const kanbanResponse = await fetchData("/kanbans/dropdown-list", {}, "GET");
-      if (kanbanResponse.error) throw new Error(kanbanResponse.message || "Failed to load kanban");
+      if (kanbanResponse.error) throw new Error(kanbanResponse.message || "Failed to load kanban.");
 
       setDataKanban(kanbanResponse.data || []);
       setForm((prev) => ({ ...prev, lotNo: lotResponse.data?.Lot || "" }));
     } catch (error) {
-      Toast.error(error.message || "Failed to load data");
+      Toast.error(error.message || "Failed to load data.");
     } finally {
       setLoading(false);
     }
@@ -82,7 +82,7 @@ export default function AddOQCPage() {
     }
 
     const response = await fetchData("/kanbans/dropdown-list-part-number", { Id: kanbanNo }, "POST");
-    if (response.error) throw new Error(response.message || "Failed to load part number");
+    if (response.error) throw new Error(response.message || "Failed to load part number.");
 
     const rows = response.data || [];
     setDataPartNumber(rows);
@@ -97,24 +97,24 @@ export default function AddOQCPage() {
 
   const handleGeneratePreview = async () => {
     if (!form.no) {
-      Toast.error("Select a kanban first");
+      Toast.error("Select a kanban first.");
       return;
     }
 
     if (!form.partNumber) {
-      Toast.error("Part number is required");
+      Toast.error("Part number is required.");
       return;
     }
 
     if (!Number(form.qtyPlan) || Number(form.qtyPlan) <= 0) {
-      Toast.error("Quantity must be greater than 0");
+      Toast.error("Quantity must be greater than 0.");
       return;
     }
 
     try {
       setLoading(true);
       const response = await fetchData("oqcs/preview", form, "POST");
-      if (response.error) throw new Error(response.message || "Failed to preview OQC label");
+      if (response.error) throw new Error(response.message || "Failed to preview OQC label.");
 
       setPreviewData(response.data);
       setForm((prev) => ({
@@ -126,7 +126,7 @@ export default function AddOQCPage() {
       }));
       setPreviewOpen(true);
     } catch (error) {
-      Toast.error(error.message || "Failed to preview OQC");
+      Toast.error(error.message || "Failed to preview OQC.");
     } finally {
       setLoading(false);
     }
@@ -138,7 +138,7 @@ export default function AddOQCPage() {
     try {
       setSaving(true);
       const response = await fetchData("oqcs", form, "POST");
-      if (response.error) throw new Error(response.message || "Failed to create oqc label");
+      if (response.error) throw new Error(response.message || "Failed to create oqc label.");
 
       const logResponse = await createActionLog({
         action: "CREATE",
@@ -146,12 +146,12 @@ export default function AddOQCPage() {
         newValue: `OQC: ${response.data?.No || form.no}, Total Label: ${previewData.totalLabel}`,
       });
 
-      if (logResponse.error) throw new Error(logResponse.message || "OQC created, but action log failed");
+      if (logResponse.error) throw new Error("OQC created successfully. Action log could not be saved.");
 
-      Toast.success(response.message || "OQC created successfully");
+      Toast.success("OQC created successfully.");
       router.push(`/pages/oqc/print/${encryptIdUrl(response.data?.Id)}`);
     } catch (error) {
-      Toast.error(error.message || "Failed to create OQC");
+      Toast.error(error.message || "Failed to create OQC.");
     } finally {
       setSaving(false);
     }
@@ -234,7 +234,7 @@ export default function AddOQCPage() {
                       }
                     }
                   } catch (error) {
-                    Toast.error(error.message || "Failed to load part number");
+                    Toast.error(error.message || "Failed to load part number.");
                   }
                 }}
               />

@@ -26,7 +26,7 @@ export default function ProfilePage() {
     fetchData("/auth/session", {}, "GET").then((response) => {
       setLoading(false);
       if (response.error) {
-        Toast.error(response.message || "Failed to load profile");
+        Toast.error(response.message || "Failed to load profile.");
         return;
       }
       setUser(response.data?.user || null);
@@ -46,12 +46,12 @@ export default function ProfilePage() {
     setSaving(false);
 
     if (response.error) {
-      Toast.error(response.message || "Failed to change password");
+      Toast.error(response.message || "Failed to change password.");
       return;
     }
 
     setForm({ currentPassword: "", newPassword: "" });
-    Toast.success(response.message || "Password changed successfully");
+    Toast.success("Password changed successfully.");
   };
 
   return (

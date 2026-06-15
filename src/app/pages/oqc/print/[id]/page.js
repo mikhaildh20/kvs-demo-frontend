@@ -44,7 +44,7 @@ export default function OqcPrintPage() {
         setPreviewData(response.data);
       } catch {
         if (!isActive) return;
-        Toast.error("Failed to load print data");
+        Toast.error("Failed to load print data.");
         router.replace("/pages/oqc");
       } finally {
         if (isActive) setLoading(false);

@@ -55,7 +55,7 @@ export default function DetailQrFormatPage() {
       setLoading(false);
 
       if (response.error) {
-        Toast.error(response.message || "QR format not found");
+        Toast.error(response.message || "QR format not found.");
         router.replace("/pages/qr-format");
         return;
       }
@@ -124,13 +124,13 @@ export default function DetailQrFormatPage() {
       });
 
       if (logResponse.error) {
-        throw new Error(logResponse.message || "QR format customer saved, but action log failed");
+        throw new Error("QR format customer mapping was saved successfully. Action log could not be saved.");
       }
 
-      Toast.success(response.message || "QR format customer data saved successfully");
+      Toast.success("QR format customer mapping saved successfully.");
       router.push("/pages/qr-format");
     } catch (error) {
-      Toast.error(error.message || "Failed to save QR format customer data");
+      Toast.error(error.message || "Failed to save QR format customer mapping.");
     } finally {
       setSaving(false);
     }
