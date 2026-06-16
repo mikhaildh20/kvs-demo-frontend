@@ -8,6 +8,7 @@ import DropDown from "@/component/common/Dropdown";
 import Formsearch from "@/component/common/Formsearch";
 import { useRouter } from "next/navigation";
 import fetchData from "@/lib/fetch";
+import { getKanbanImportErrorMessage } from "@/lib/kanbanForm";
 import { encryptIdUrl } from "@/lib/encryptor";
 import Breadcrumb from "@/component/common/Breadcrumb";
 import Loading from "@/component/common/Loading";
@@ -326,8 +327,7 @@ export default function KanbanPage(){
             handleCloseImport();
             await loadData(1, sortBy, search, sortSpecial, sortStatus);
         } catch (error) {
-            Toast.error(error.message || "Failed to import kanban data.");
-            console.log(error);
+            Toast.error(getKanbanImportErrorMessage(error));
         } finally {
             setLoading(false);
         }
