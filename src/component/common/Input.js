@@ -255,6 +255,7 @@ export default function Input({
   readOnly = false,
   autoComplete = "off",
   maxLength,
+  rows = 3,
   lovData = [],
   lovColumns = [],
   lovValueColumn,
@@ -514,6 +515,23 @@ export default function Input({
         </div>
       )}
     </div>
+  ) : type === "textarea" ? (
+    <textarea
+      className={`form-control rounded-2 ${error ? "is-invalid" : ""}`}
+      id={id || name}
+      name={name}
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder={placeholder}
+      disabled={disabled}
+      required={required}
+      readOnly={readOnly}
+      autoComplete={autoComplete}
+      maxLength={maxLength}
+      rows={rows}
+      style={{ ...sizeStyle, height: "auto", minHeight: sizeStyle.height }}
+    />
   ) : (
     <input
       type={type}
@@ -552,7 +570,20 @@ export default function Input({
 
 Input.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.oneOf(["text", "password", "email", "number", "tel", "url", "search", "date", "time", "datetime-local", "lov"]),
+  type: PropTypes.oneOf([
+    "text",
+    "password",
+    "email",
+    "number",
+    "tel",
+    "url",
+    "search",
+    "date",
+    "time",
+    "datetime-local",
+    "textarea",
+    "lov",
+  ]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
@@ -568,6 +599,7 @@ Input.propTypes = {
   readOnly: PropTypes.bool,
   autoComplete: PropTypes.string,
   maxLength: PropTypes.number,
+  rows: PropTypes.number,
   lovData: PropTypes.arrayOf(PropTypes.object),
   lovColumns: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.string.isRequired, label: PropTypes.string.isRequired })),
   lovValueColumn: PropTypes.string,

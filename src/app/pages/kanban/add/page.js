@@ -44,6 +44,8 @@ const SectionTitle = ({ title }) => (
     </div>
 );
 
+const VOICE_DESCRIPTION_MAX_LENGTH = 2000;
+
 export default function AddKanbanPage() {
     const router = useRouter();
     const [form, setForm] = useState(initialForm);
@@ -327,17 +329,25 @@ export default function AddKanbanPage() {
                             <div className="col-lg-6">
                                 <Input
                                     label="Sequence Check Description"
+                                    type="textarea"
                                     name="sequenceCheckDesc"
                                     value={form.sequenceCheckDesc}
                                     onChange={(e) => updateField("sequenceCheckDesc", e.target.value)}
+                                    maxLength={VOICE_DESCRIPTION_MAX_LENGTH}
+                                    rows={4}
+                                    helperText={`${form.sequenceCheckDesc.length}/${VOICE_DESCRIPTION_MAX_LENGTH} characters. Longer text is split automatically for voice generation.`}
                                 />
                             </div>
                             <div className="col-lg-6">
                                 <Input
                                     label="Logistic Guide Description"
+                                    type="textarea"
                                     name="logisticGuideDesc"
                                     value={form.logisticGuideDesc}
                                     onChange={(e) => updateField("logisticGuideDesc", e.target.value)}
+                                    maxLength={VOICE_DESCRIPTION_MAX_LENGTH}
+                                    rows={4}
+                                    helperText={`${form.logisticGuideDesc.length}/${VOICE_DESCRIPTION_MAX_LENGTH} characters. Longer text is split automatically for voice generation.`}
                                 />
                             </div>
                         </div>
