@@ -10,14 +10,12 @@ import Table from "@/component/common/Table";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import { clearAuthSession } from "@/lib/auth";
-import fetchData, { API_BASE_URL } from "@/lib/fetch";
-
-const apiRoot = API_BASE_URL.replace(/\/api$/, "");
+import fetchData from "@/lib/fetch";
 
 const resolveAssetUrl = (path) => {
   if (!path) return "";
   if (/^https?:\/\//i.test(path)) return path;
-  return `${apiRoot}${String(path).startsWith("/") ? "" : "/"}${path}`;
+  return `/${String(path).replace(/^\/+/, "")}`;
 };
 
 const emptyTarget = {

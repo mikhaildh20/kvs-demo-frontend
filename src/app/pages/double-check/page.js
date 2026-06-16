@@ -8,7 +8,7 @@ import Loading from "@/component/common/Loading";
 import SweetAlert from "@/component/common/SweetAlert";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
-import fetchData, { API_BASE_URL } from "@/lib/fetch";
+import fetchData from "@/lib/fetch";
 
 const emptyScan = {
   qrText: "",
@@ -28,12 +28,10 @@ const emptyScan = {
   sequenceCheckVoicePath: "",
 };
 
-const apiRoot = API_BASE_URL.replace(/\/api$/, "");
-
 const resolveAssetUrl = (path) => {
   if (!path) return "";
   if (/^https?:\/\//i.test(path)) return path;
-  return `${apiRoot}${String(path).startsWith("/") ? "" : "/"}${path}`;
+  return `/${String(path).replace(/^\/+/, "")}`;
 };
 
 const formatNumber = (value) => Number(value || 0).toLocaleString("en-US");
