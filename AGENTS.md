@@ -22,5 +22,6 @@ Rules:
 - KVS company/brand text should use `Nusantara Lighting Automotive` or NLA wording.
 - Keep Portfolio company/work-history naming separate from KVS branding.
 - Hide Add/Detail/Edit/Print buttons when the current role lacks the matching page action path.
-- Keep user-facing Toast text English and consistent.
+- Keep user-facing Toast text English and consistent; normalize import errors/no-change states instead of showing raw backend/Prisma messages.
+- Keep date-only import fields date-only; Barcode Delivery Scan `Ship Date` must not shift by timezone.
 - Verify with `npm run lint`, `npm run build`, service status, and login page HTTP 200 before reporting success.

@@ -47,6 +47,12 @@ Keep this context separate from Karsa Home, Portfolio, and Hermes Dashboard.
 - Toast messages should be English, consistent, and frontend-controlled for success messages; avoid relying on backend `response.message` for normal success wording.
 - Auth cookie uses `sameSite: strict` and `secure` on HTTPS.
 - Excel upload input accepts `.xlsx` only.
+- Import Toasts should be normalized to clean English text. Do not show raw Prisma/backend stack messages in the UI.
+- Kanban import and Barcode Delivery Scan import should show a no-change success state when re-importing identical files instead of a generic failure Toast.
+- Barcode Delivery Scan import success/action-log text should include inserted/updated/unchanged counts when available.
+- Date-only values from backend/imports should not be formatted in a way that shifts the calendar date. In Barcode Delivery Scan, `Ship Date` from Excel must remain the same date in list/report filters.
+- PDF/document viewers should use app-origin upload URLs (`/uploads/...` on `https://kvs-demo.karsa-dev.my.id`) instead of direct API-domain URLs to avoid iframe blocking.
+- Kanban add/edit narrative description fields are textarea fields with 2000-character limits because backend TTS chunks long text.
 - Lint may have non-blocking warnings around `<img>`, ARIA combobox, and hook dependency.
 
 ## Verification Checklist
