@@ -320,10 +320,16 @@ export default function KanbanPage(){
             await createActionLog({
                 action: "IMPORT",
                 oldValue: null,
-                newValue: `Kanban import: ${response.data?.total ?? 0} rows`,
+                newValue: response.data?.noChanges
+                    ? `Kanban import: no new changes (${response.data?.unchanged ?? 0} unchanged rows)`
+                    : `Kanban import: ${response.data?.inserted ?? 0} inserted, ${response.data?.updated ?? 0} updated, ${response.data?.unchanged ?? 0} unchanged`,
             });
 
-            Toast.success("Kanban data imported successfully.");
+            Toast.success(
+                response.data?.noChanges
+                    ? "Kanban import completed. No new changes were found."
+                    : "Kanban data imported successfully."
+            );
             handleCloseImport();
             await loadData(1, sortBy, search, sortSpecial, sortStatus);
         } catch (error) {
