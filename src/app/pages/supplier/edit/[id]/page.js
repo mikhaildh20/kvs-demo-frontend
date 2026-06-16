@@ -97,7 +97,7 @@ export default function EditSupplierPage() {
                   value={form.code}
                   onChange={(e) => setForm((current) => ({ ...current, code: e.target.value }))}
                   required
-                  maxLength={3}
+                  maxLength={30}
                 />
               </div>
             </div>
