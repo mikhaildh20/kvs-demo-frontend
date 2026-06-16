@@ -22,6 +22,17 @@ const clearSidebarGroupState = () => {
   }
 };
 
+const getLoginErrorMessage = (response) => {
+  const rawMessage = String(response?.message || "").trim();
+  const normalizedMessage = rawMessage.toLowerCase();
+
+  if (!rawMessage) return "Login failed.";
+  if (normalizedMessage.includes("pengguna tidak aktif")) return "User account is inactive.";
+  if (normalizedMessage.includes("tidak aktif")) return "Account is inactive.";
+
+  return rawMessage.endsWith(".") ? rawMessage : `${rawMessage}.`;
+};
+
 export default function LoginPage() {
   const router = useRouter();
   const [form, setForm] = useState({ username: "", password: "" });
@@ -55,7 +66,7 @@ export default function LoginPage() {
     setLoading(false);
 
     if (response.error) {
-      setMessage(response.message || "Login failed");
+      setMessage(getLoginErrorMessage(response));
       return;
     }
 
