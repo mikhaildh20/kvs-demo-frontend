@@ -13,6 +13,36 @@ import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
 
+const getImportErrorMessage = (error) => {
+  const message =
+    typeof error === "string"
+      ? error
+      : error?.message || error?.response?.data?.message || error?.data?.message || "";
+  const lower = message.toLowerCase();
+
+  if (!message) return "Failed to import barcode delivery scan data. Check the Excel file and try again.";
+  if (lower.includes("excel file is required")) return "Choose an Excel file first.";
+  if (lower.includes("missing columns")) return message;
+  if (lower.includes("unsupported file type")) return "Only Excel .xlsx files are allowed for barcode delivery scan import.";
+  if (lower.includes("file") && (lower.includes("size") || lower.includes("limit") || lower.includes("maximum"))) {
+    return "The Excel file is too large. Maximum file size is 25 MB.";
+  }
+  if (lower.includes("invalid file") || lower.includes("worksheet") || lower.includes("zip") || lower.includes("end of central directory")) {
+    return "The Excel file could not be read. Make sure you upload a valid .xlsx template.";
+  }
+  if (
+    lower.includes("prisma") ||
+    lower.includes("constraint") ||
+    lower.includes("stack") ||
+    lower.includes("trace") ||
+    message.length > 140
+  ) {
+    return "Failed to import barcode delivery scan data. Check the Excel content and try again.";
+  }
+
+  return message;
+};
+
 const sortOptions = [
   { Value: "bds_ship_date DESC", Text: "Ship Date [↓]" },
   { Value: "bds_ship_date ASC", Text: "Ship Date [↑]" },
@@ -169,17 +199,23 @@ export default function BarcodeDeliveryScanImportPage() {
       const logResponse = await createActionLog({
         action: "IMPORT",
         oldValue: null,
-        newValue: `BDS import ${importFile.name}: ${response.data?.imported || 0} rows`,
+        newValue: response.data?.noChanges
+          ? `BDS import ${importFile.name}: no new changes (${response.data?.unchanged || 0} unchanged rows)`
+          : `BDS import ${importFile.name}: ${response.data?.inserted || 0} inserted, ${response.data?.updated || 0} updated, ${response.data?.unchanged || 0} unchanged`,
         menuPath: "/pages/barcode-delivery-scan-import",
       });
 
       if (logResponse.error) throw new Error("Import completed successfully. Action log could not be saved.");
 
-      Toast.success("Barcode delivery scan data imported successfully.");
+      Toast.success(
+        response.data?.noChanges
+          ? "Barcode delivery scan import completed. No new changes were found."
+          : "Barcode delivery scan data imported successfully."
+      );
       handleCloseImport();
       await loadData(1, sortBy, search, status, shipDate);
     } catch (error) {
-      Toast.error(error.message || "Failed to import barcode delivery scan data.");
+      Toast.error(getImportErrorMessage(error));
     } finally {
       setLoading(false);
     }
