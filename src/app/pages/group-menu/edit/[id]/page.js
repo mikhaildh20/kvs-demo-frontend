@@ -9,6 +9,7 @@ import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 
 export default function EditGroupMenuPage() {
   const router = useRouter();
@@ -50,6 +51,8 @@ export default function EditGroupMenuPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const confirmed = await confirmSaveChanges("group menu");
+    if (!confirmed) return;
     setSaving(true);
 
     const response = await fetchData(`group-menus/${encryptedId}`, { name: form.name }, "PUT");

@@ -9,6 +9,7 @@ import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 import { QR_PLACEHOLDERS, QR_PLACEHOLDER_GUIDE } from "@/lib/qr/qr-placeholders";
 import QrService from "@/lib/qr/qr.service";
 
@@ -78,6 +79,8 @@ export default function EditQrFormatPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const confirmed = await confirmSaveChanges("QR format");
+    if (!confirmed) return;
 
     try {
       QrService.validatePattern(form.pattern);

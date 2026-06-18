@@ -9,6 +9,7 @@ import Input from "@/component/common/Input";
 import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 import { createActionLog } from "@/lib/actionLog";
 
 export default function EditUserPage() {
@@ -56,6 +57,8 @@ export default function EditUserPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const confirmed = await confirmSaveChanges("user");
+    if (!confirmed) return;
     setSaving(true);
 
     const response = await fetchData(`users/${encryptedId}`, { roleId: Number(form.roleId) }, "PUT");

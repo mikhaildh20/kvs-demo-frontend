@@ -92,9 +92,10 @@ export default function LoginPage() {
           <img
             src="/images/logoNLA.png"
             alt="NLA"
+            className="login-brand-logo"
             style={{
-              width: 132,
-              height: 42,
+              width: 190,
+              height: 96,
               objectFit: "contain",
               objectPosition: "left center",
               marginBottom: 18,

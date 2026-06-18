@@ -9,6 +9,7 @@ import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 
 export default function EditColorPage() {
     const router = useRouter();
@@ -49,6 +50,8 @@ export default function EditColorPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const confirmed = await confirmSaveChanges("color");
+        if (!confirmed) return;
         setSaving(true);
 
         const response = await fetchData(

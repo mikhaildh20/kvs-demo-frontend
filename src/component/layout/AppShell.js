@@ -38,8 +38,8 @@ export default function AppShell({ children, session }) {
                   alt="Kanban Verification System"
                   className="content-brand-logo"
                   style={{
-                    width: 88,
-                    height: 28,
+                    width: 128,
+                    height: 52,
                     objectFit: "contain",
                   }}
                 />

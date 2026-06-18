@@ -9,6 +9,7 @@ import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 
 export default function EditCustomerPage() {
     const router = useRouter();
@@ -87,6 +88,8 @@ export default function EditCustomerPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const confirmed = await confirmSaveChanges("customer");
+        if (!confirmed) return;
         setSaving(true);
 
         try {

@@ -10,6 +10,7 @@ import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 
 const PATH_PREFIX = "/pages/";
 
@@ -67,6 +68,8 @@ export default function EditMenuPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const confirmed = await confirmSaveChanges("menu");
+    if (!confirmed) return;
     setSaving(true);
 
     const payload = {

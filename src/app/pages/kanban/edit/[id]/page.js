@@ -10,6 +10,7 @@ import Loading from "@/component/common/Loading";
 import Toast from "@/component/common/Toast";
 import { createActionLog } from "@/lib/actionLog";
 import fetchData from "@/lib/fetch";
+import { confirmSaveChanges } from "@/lib/saveConfirmation";
 import uploadFile from "@/lib/upload";
 import generateVoice from "@/lib/generateVoice";
 import { getKanbanErrorMessage, normalizeOptionalText } from "@/lib/kanbanForm";
@@ -168,6 +169,8 @@ export default function EditKanbanPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const confirmed = await confirmSaveChanges("kanban");
+        if (!confirmed) return;
         setSaving(true);
 
         try {
